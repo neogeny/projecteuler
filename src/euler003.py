@@ -1,5 +1,5 @@
 # Find the largest prime factor of the given number
-target = 600851475143
+TARGET = 600851475143
 
 def largest_prime_factor(n):
     def factor(n, i):
@@ -10,10 +10,11 @@ def largest_prime_factor(n):
         return n
 
     n = factor(n, 2)
-    for i in xrange(3, n, 2):
+    i = 3
+    while i < n:
         n = factor(n, i)
-        if n <= i: break
+        i += 2
     return n
 
 if __name__ == '__main__':
-    print largest_prime_factor(target)
+    print largest_prime_factor(TARGET)
