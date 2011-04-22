@@ -14,17 +14,23 @@ Find the product abc.
 
 import math
 
-def solve_b(a):
-    return int(1000 * (500 - a) / (1000 - a))
+def pythagorean_triplet_that_sums(s):
+    def solve_b(a):
+        return int(1000 * (500 - a) / (1000 - a))
 
-def find_c(s):
     for a in xrange(1, s):
         b = solve_b(a)
-        if b < a: continue
-        c = int(math.sqrt(a ** 2 + b ** 2))
-        print a, b, c, a + b + c
+        if b < a:
+            break
+
+        c = math.sqrt(a ** 2 + b ** 2)
+        if c != int(c):
+            continue
+        c = int(c)
+
+#        print a, b, c, a + b + c
         if a + b + c == s:
             return a * b * c
 
 if __name__ == '__main__':
-    print find_c(1000)
+    print pythagorean_triplet_that_sums(1000)
