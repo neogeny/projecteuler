@@ -6,13 +6,14 @@ def largest_prime_factor(n):
         while n > i:
             a, r = divmod(n, i)
             if r: break
-            n = a 
+            n = a
         return n
 
-    n = factor(n, 2) 
+    n = factor(n, 2)
     for i in xrange(3, n, 2):
         n = factor(n, i)
         if n <= i: break
     return n
 
-print largest_prime_factor(target)
+if __name__ == '__main__':
+    print largest_prime_factor(target)

@@ -5,7 +5,7 @@
 from math import sqrt
 from bisect import bisect
 
-__known_primes = [
+__primes = [
            2, 3, 5, 7,
            11, 13, 17, 19,
            23, 29,
@@ -19,25 +19,24 @@ __known_primes = [
            ]
 
 def nth_prime(n):
-    global __known_primes
-    if not __known_primes:
-        __known_primes = [2]
+    global __primes
+    if not __primes:
+        __primes = [2]
 
-    if n <= len(__known_primes):
-        return __known_primes[n - 1]
+    if n <= len(__primes):
+        return __primes[n - 1]
 
-    n -= len(__known_primes)
-    k = __known_primes[-1] + 2
+    n -= len(__primes)
+    k = __primes[-1] + 2
     while n > 0:
-        l = bisect(__known_primes, sqrt(k))
-        for p in __known_primes[1:l]:
-            if not k % p: break
-        else:
-            __known_primes.append(k)
+        limit = bisect(__primes, sqrt(k))
+        if all(k % p for p in __primes[1:limit]):
+            __primes.append(k)
             n -= 1
         k += 2
 
-    return __known_primes[-1]
+    return __primes[-1]
 
-print nth_prime(10001)
-print nth_prime(10001)
+if __name__ == '__main__':
+    print nth_prime(10001)
+    print nth_prime(10001)
