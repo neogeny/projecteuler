@@ -10,12 +10,12 @@
 #Find the difference between the sum of the squares of the first one
 #hundred natural numbers and the square of the sum.
 
-TARGET=100
+TARGET = 100
 
 def sum_of_squares(n):
-    return sum(x**2 for x in xrange(TARGET+1))
+    return (n * (n + 1) * (2 * n + 1)) // 6 
 
 def square_of_sum(n):
-    return sum(xrange(TARGET+1))**2
+    return (n ** 2 * (n + 1) ** 2) // 4 
 
 print square_of_sum(TARGET) - sum_of_squares(TARGET) 
