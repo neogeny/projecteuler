@@ -21,8 +21,8 @@ def factors(n):
     for m in xrange(2, n):
         f, _, k = factor(n, m)
         if k:
-            return [(m,k)] + factors(f)
-    return [(n,1)]
+            return [(m, k)] + factors(f)
+    return [(n, 1)]
 
 def mcm(numbers):
     max_factor = {}
@@ -31,7 +31,8 @@ def mcm(numbers):
             max_factor[f] = max(max_factor.get(f, 0), k)
     result = 1
     for f, k in max_factor.items():
-        result *= f**k
+        result *= f ** k
     return result
 
-print mcm(xrange(TARGET))
+if __name__ == '__main__':
+    print mcm(xrange(TARGET))

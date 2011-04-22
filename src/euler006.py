@@ -13,9 +13,10 @@
 TARGET = 100
 
 def sum_of_squares(n):
-    return (n * (n + 1) * (2 * n + 1)) // 6 
+    return (n * (n + 1) * (2 * n + 1)) // 6
 
 def square_of_sum(n):
-    return (n ** 2 * (n + 1) ** 2) // 4 
+    return (n ** 2 * (n + 1) ** 2) // 4
 
-print square_of_sum(TARGET) - sum_of_squares(TARGET) 
+if __name__ == '__main__':
+    print square_of_sum(TARGET) - sum_of_squares(TARGET)
