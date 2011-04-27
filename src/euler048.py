@@ -22,4 +22,4 @@ def n_digits_from_sum_of_powers(k, p):
 if __name__ == '__main__':
     print n_digits_from_sum_of_powers(15, 10)
     print n_digits_from_sum_of_powers(10, 1000)
-    print sum(x ** x for x in range(1, 1001)) % (10 ** 10)
+    print sum(x ** x for x in range(1, 1000 + 1)) % (10 ** 10)
