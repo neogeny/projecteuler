@@ -18,7 +18,7 @@ def factor(n, m):
 def factors(n):
     if n <= 1:
         return []
-    for m in xrange(2, n):
+    for m in xrange(2, n//2+1):
         f, _, k = factor(n, m)
         if k:
             return [(m, k)] + factors(f)
