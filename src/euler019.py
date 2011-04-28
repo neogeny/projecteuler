@@ -14,11 +14,13 @@ You are given the following information, but you may prefer to do some research 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 """
 
+from datetime import date
+
 MONTH_DAYS = [31,28,31,30,31,30,31,31,30,31,30,31]
 MONTH_DAYS_B = MONTH_DAYS
 MONTH_DAYS_B[1] = 29
 
-if __name__ == '__main__':
+def byhand():
     n = 2 # wednesday in 1901
     sundays = 0
     for y in xrange(1901,2000+1):
@@ -27,4 +29,16 @@ if __name__ == '__main__':
             n += d
             if n%7 == 0:
                 sundays += 1
-    print sundays
+    return sundays
+
+def withdates():
+    sundays = 0
+    for y in xrange(1901,2000+1):
+        for m in xrange(1,12+1):
+            if date(y,m,1).isoweekday() == 7:
+                sundays += 1
+    return sundays
+    
+if __name__ == '__main__':
+    print byhand()
+    print withdates()
