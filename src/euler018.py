@@ -70,8 +70,15 @@ def findpath(graph, start, stop):
             return (f+f*len(p)-c, list(reversed([(x.i,x.j) for x in p])))
         for m in graph.edges[n]:
             push(heap,(f-m.cost+c,m,[n]+p))
-        
+
+def bruteforce():
+    T = deepcopy(TRIANGLE)
+    for i in reversed(xrange(len(T)-1)):        
+        for j,c in enumerate(T[i]):
+            T[i][j] += max(T[i+1][j],T[i+1][j+1])
+    return T[0][0]
 
 if __name__ == '__main__':
     graph,start,stop = buildgraph()
     print findpath(graph, start, stop)
+    print bruteforce()
