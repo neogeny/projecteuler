@@ -30,10 +30,10 @@ def nth_prime(n):
 
     n -= len(__primes)
     k = __primes[-1]
-    limit = bisect(__primes, int(sqrt(k)))
+    limit = 1+bisect(__primes, int(sqrt(k)))
     while n > 0:
         k += 2
-        if __primes[limit]**2 < k:
+        while __primes[limit]**2 < k:
             limit += 1
         if all(k % p for p in __primes[1:limit]):
             __primes.append(k)
