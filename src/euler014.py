@@ -1,23 +1,7 @@
-import functools
-
-def memoize(func):
-    func.cache = {}
-    def memoize(*args, **kw):
-        if kw: # frozenset is used to ensure hashability
-            key = args, frozenset(kw.iteritems())
-        else:
-            key = args
-        cache = func.cache
-        if key in cache:
-            return cache[key]
-        else:
-            cache[key] = result = func(*args, **kw)
-            return result
-    return functools.update_wrapper(memoize, func)
 
 def next_collaz(n):
-    if n%2:
-        return 3*n+1
+    if n % 2:
+        return 3 * n + 1
     else:
         return n // 2
 
@@ -39,7 +23,7 @@ def _collaz_seq_len(n):
     return c
 
 def collaz_seq_len(n):
-    if n not in __count: 
+    if n not in __count:
         __count[n] = 1 + collaz_seq_len(next_collaz(n))
     return __count[n]
 
@@ -54,7 +38,7 @@ if __name__ == '__main__':
     print collaz_seq_len(1)
     m = 0
     n = 0
-    for i in range(1,10**6):
+    for i in range(1, 10 ** 6):
         c = collaz_seq_len(i)
         if c < m: continue
         #print i,c,'*'

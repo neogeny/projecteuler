@@ -18,12 +18,12 @@ What is the value of the first triangle number to have over five hundred divisor
 """
 from functools import reduce
 from itertools import combinations
-from euler005 import factors
+from factorization import factors
 
 TARGET = 500
 
 def triangle_with_divisors(n):
-    mul = lambda x,y :x*y
+    mul = lambda x, y :x * y
     def prod(q): return reduce(mul, q, 1)
     t = 1
     i = 1
@@ -31,7 +31,7 @@ def triangle_with_divisors(n):
         f = factors(t)
         reps = [k[1] for k in f]
         count = 1
-        for s in xrange(1, len(reps)+1):
+        for s in xrange(1, len(reps) + 1):
             for c in combinations(reps, s):
                 count += prod(c)
 #        print n, t, f, reps, count

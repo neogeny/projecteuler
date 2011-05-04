@@ -3,12 +3,7 @@
 #
 #Find the largest palindrome made from the product of two 3-digit numbers.
 
-def is_palindrome(n):
-    n = str(n)
-    m, r = divmod(len(n), 2)
-    if r: return False
-    #print n, n[:m], n[len(n)+1:m-1:-1]
-    return n[:m] == n[len(n) + 1:m - 1:-1]
+from palindromes import is_palindrome
 
 def largest_palindromic(digits):
     top = int('9' * digits)
