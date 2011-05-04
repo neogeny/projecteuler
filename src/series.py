@@ -1,8 +1,15 @@
-def fibs(n):
+def all_fibs():
     a = b = 1
-    for _ in range(n):
+    while True:
         yield a
         a, b = b, a + b
+
+def fibs(n):
+    for i, f in enumerate(all_fibs()):
+        if i >= n:
+            break
+        yield f
+
 
 def sum_of_squares(n):
     return (n * (n + 1) * (2 * n + 1)) // 6
@@ -11,4 +18,4 @@ def square_of_sum(n):
     return (n ** 2 * (n + 1) ** 2) // 4
 
 if __name__ == '__main__':
-    pass
+    print list(fibs(4))
