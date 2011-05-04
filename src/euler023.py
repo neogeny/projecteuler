@@ -16,6 +16,5 @@ def non_abundants(m):
     sums = set(a + b for i, a in enumerate(abundants) for b in abundants[i:])
     return (n for n in xrange(1, m + 1) if n not in sums)
 
-
 if __name__ == '__main__':
     print sum(non_abundants(TARGET))
