@@ -45,40 +45,40 @@ def buildgraph():
     T = deepcopy(TRIANGLE)
     edges = {}
     for i in xrange(len(T)):
-        for j,c in enumerate(T[i]):
-            n = Node(c,i,j)
+        for j, c in enumerate(T[i]):
+            n = Node(c, i, j)
             edges[n] = []
             T[i][j] = n
-    for i in xrange(len(T)-1):
+    for i in xrange(len(T) - 1):
         for j in xrange(len(T[i])):
             n = T[i][j]
-            edges[n].append(T[i+1][j])
-            edges[n].append(T[i+1][j+1])
-    stop = Node(0,-1,-1)   
+            edges[n].append(T[i + 1][j])
+            edges[n].append(T[i + 1][j + 1])
+    stop = Node(0, -1, -1)
     edges[stop] = []
-    for j in xrange(len(T[-1])-1):
+    for j in xrange(len(T[-1]) - 1):
         edges[T[-1][j]].append(stop)
     start = T[0][0]
     return (Graph(edges.keys(), edges), start, stop)
 
 def findpath(graph, start, stop):
     f = max(n.cost for n in graph.nodes)
-    heap = [(f-start.cost, start, [])]
+    heap = [(f - start.cost, start, [])]
     while heap:
-        c,n,p = pop(heap)
+        c, n, p = pop(heap)
         if n == stop:
-            return (f+f*len(p)-c, list(reversed([(x.i,x.j) for x in p])))
+            return (f + f * len(p) - c, list(reversed([(x.i, x.j) for x in p])))
         for m in graph.edges[n]:
-            push(heap,(f-m.cost+c,m,[n]+p))
+            push(heap, (f - m.cost + c, m, [n] + p))
 
 def bruteforce():
     T = deepcopy(TRIANGLE)
-    for i in reversed(xrange(len(T)-1)):        
-        for j,c in enumerate(T[i]):
-            T[i][j] += max(T[i+1][j],T[i+1][j+1])
+    for i in reversed(xrange(len(T) - 1)):
+        for j, _ in enumerate(T[i]):
+            T[i][j] += max(T[i + 1][j], T[i + 1][j + 1])
     return T[0][0]
 
 if __name__ == '__main__':
-    graph,start,stop = buildgraph()
+    graph, start, stop = buildgraph()
     print findpath(graph, start, stop)
     print bruteforce()
