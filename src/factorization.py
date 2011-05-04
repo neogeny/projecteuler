@@ -1,3 +1,5 @@
+from itertools import combinations
+
 def factor(n, m):
     k = 0
     while n >= m:
@@ -26,6 +28,21 @@ def mcm(numbers):
         result *= f ** k
     return result
 
+def multiples(q):
+    if not q:
+        yield 1
+    else:
+        n, k = q[0]
+        for j in multiples(q[1:]):
+            for i in xrange(1, k + 1):
+                yield n ** i * j
+
+def divisors(t):
+    f = factors(t)
+    for s in xrange(0, len(f) + 1):
+        for c in combinations(f, s):
+            for m in multiples(c):
+                yield m
 
 
 if __name__ == '__main__':
