@@ -1,5 +1,6 @@
 from math import sqrt
-from bisect import bisect
+from bisect import bisect_left
+from itertools import count
 
 
 __primes = [
@@ -25,7 +26,7 @@ def nth_prime(n):
 
     n -= len(__primes)
     k = __primes[-1]
-    limit = 1 + bisect(__primes, int(sqrt(k)))
+    limit = 1 + bisect_left(__primes, int(sqrt(k)))
     while n > 0:
         k += 2
         while __primes[limit] ** 2 < k:
@@ -36,5 +37,31 @@ def nth_prime(n):
     return __primes[-1]
 
 
+def is_prime(n):
+    if n <= __primes[-1]:
+        i = bisect_left(__primes, n)
+        return __primes[i] == n
+
+    for k in count(len(__primes) + 1):
+        p = nth_prime(k)
+        if p == n:
+            return True
+        elif p > n:
+            return False
+
+
+def all_primes():
+    for n in count(1):
+        yield nth_prime(n)
+
+def primes_upto(m):
+    for p in all_primes():
+        if p <= m:
+            yield p
+        else:
+            break
+
+
 if __name__ == '__main__':
-    pass
+    for p in primes_upto(1000000):
+        assert is_prime(p)

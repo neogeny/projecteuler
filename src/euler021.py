@@ -26,7 +26,7 @@ def multiples(q):
 
 def divisors(t):
     f = factors(t)
-    for s in xrange(1, len(f) + 1):
+    for s in xrange(0, len(f) + 1):
         for c in combinations(f, s):
             for m in multiples(c):
                 yield m
@@ -34,7 +34,7 @@ def divisors(t):
 __seen = {}
 def d(n):
     if n not in __seen:
-        __seen[n] = 1 + sum(divisors(n)) - n
+        __seen[n] = sum(divisors(n)) - n
     return __seen[n]
 
 def amicable(n):
@@ -44,7 +44,6 @@ def amicable(n):
 def amicables(n):
     for i in xrange(2, n):
         if amicable(i):
-            print i
             yield i
 
 if __name__ == '__main__':

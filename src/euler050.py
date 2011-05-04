@@ -1,27 +1,18 @@
 # -*- encoding:utf-8 -*-
 """
-The prime 41, can be written as the sum of six consecutive primes:
+The prime 41, can be written as the sum of six consecutive primes_upto:
 41 = 2 + 3 + 5 + 7 + 11 + 13
 
-This is the longest sum of consecutive primes that adds to a prime below one-hundred.
+This is the longest sum of consecutive primes_upto that adds to a prime below one-hundred.
 
-The longest sum of consecutive primes below one-thousand that adds to a prime, contains 21 terms, and is equal to 953.
+The longest sum of consecutive primes_upto below one-thousand that adds to a prime, contains 21 terms, and is equal to 953.
 
-Which prime, below one-million, can be written as the sum of the most consecutive primes?
+Which prime, below one-million, can be written as the sum of the most consecutive primes_upto?
 """
-from itertools import count
-from primality import nth_prime
+from primality import primes_upto
 
-def primes(m):
-    for i in count(1):
-        p = nth_prime(i)
-        if p < m + 1:
-            yield p
-        else:
-            break
-
-def first_prime_that_sums():
-    prl = list(primes(10 ** 6))
+def consecutive_primes_that_sum_prime():
+    prl = list(primes_upto(10 ** 6))
     prs = set(prl)
     last = []
     for i in xrange(len(prl)):
@@ -39,4 +30,4 @@ def first_prime_that_sums():
     return sum(last), len(last)
 
 if __name__ == '__main__':
-    print first_prime_that_sums()
+    print consecutive_primes_that_sum_prime()
