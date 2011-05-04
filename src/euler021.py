@@ -9,27 +9,10 @@ therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and 142; so d
 Evaluate the sum of all the amicable numbers under 10000.
 """
 
-from math import sqrt
-from itertools import combinations
-from factorization import factors
+from factorization import divisors
 
 TARGET = 10000
 
-def multiples(q):
-    if not q:
-        yield 1
-    else:
-        n, k = q[0]
-        for j in multiples(q[1:]):
-            for i in xrange(1, k + 1):
-                yield n ** i * j
-
-def divisors(t):
-    f = factors(t)
-    for s in xrange(0, len(f) + 1):
-        for c in combinations(f, s):
-            for m in multiples(c):
-                yield m
 
 __seen = {}
 def d(n):
