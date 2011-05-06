@@ -14,7 +14,7 @@ What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed 
 """
 from math import sqrt
 
-def spd(m):
+def spiral_diagonal_sum(m):
     diag_no = 1
     diag_sum = 1
     for r in range(1, 1+m // 2):
@@ -26,6 +26,6 @@ def spd(m):
     return diag_sum
 
 if __name__ == '__main__':
-    print spd(5)
-    print spd(7)
-    print spd(1001)
+    print spiral_diagonal_sum(5)
+    print spiral_diagonal_sum(7)
+    print spiral_diagonal_sum(1001)
