@@ -1,4 +1,5 @@
 from itertools import combinations
+from primality import primes_upto
 
 def factor(n, m):
     k = 0
@@ -10,13 +11,23 @@ def factor(n, m):
     return (n, m, k)
 
 def factors(n):
-    if n <= 1:
-        return []
-    for m in xrange(2, n // 2 + 1):
-        f, _, k = factor(n, m)
-        if k:
-            return [(m, k)] + factors(f)
-    return [(n, 1)]
+    while n > 1:
+        for m in primes_upto(n):
+            f, _, k = factor(n, m)
+            if k:
+                yield (m, k)
+                n = f
+                break
+        else:
+            yield (n, 1)
+
+def factor_count(n, upto=None):
+    s = 0
+    for _, k in factors(n):
+        s += k
+        if upto and s >= upto:
+            break
+    return s
 
 def mcm(numbers):
     max_factor = {}
@@ -46,4 +57,6 @@ def divisors(t):
 
 
 if __name__ == '__main__':
-    pass
+    print list(factors(4))
+    print list(factors(7))
+    print list(factors(100))
