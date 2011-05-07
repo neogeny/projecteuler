@@ -35,11 +35,15 @@ def nth_prime(n):
             n -= 1
     return __primes[-1]
 
-
-def is_prime(n):
+def _known_prime(n):
     if n <= __primes[-1]:
         i = bisect(__primes, n)
         return __primes[i] == n
+    return False
+
+def is_prime(n):
+    if _known_prime(n):
+        return True
 
     for k in count(len(__primes) + 1):
         p = nth_prime(k)
@@ -64,16 +68,14 @@ def sieve_upto(m):
     sieve = (m + 1) * [0]
     for p in xrange(2, m + 1):
         if not sieve[p]:
+            if p > __primes[-1]:
+                __primes.append(p)
             yield p
             for j in xrange(m // p + 1):
                 sieve[j * p] += 1
-#            t = j
-#            while t and t % p == 0:
-#                sieve[j * p] += 1
-#                t = t // p;
 
 def test(pr):
-    N = 10 ** 6
+    N = 10 ** 4
     s = 0
     for p in pr(N):
         s += 1
@@ -82,5 +84,6 @@ def test(pr):
 
 if __name__ == '__main__':
     from timeit import timeit
-    print timeit('test(primes_upto)', 'from primality import *', number=2)
+#    print timeit('test(primes_upto)', 'from primality import *', number=2)
+    print timeit('test(sieve_upto)', 'from primality import *', number=2)
     print timeit('test(sieve_upto)', 'from primality import *', number=2)
