@@ -1,31 +1,33 @@
 from itertools import combinations
-from primality import primes_upto
+from primality import primes_upto, is_prime
 
 def factor(n, m):
     k = 0
     while n >= m:
         d, r = divmod(n, m)
-        if r: break
+        if r:
+            break
         n = d
         k += 1
     return (n, m, k)
 
 def factors(n):
     while n > 1:
-        for m in primes_upto(n):
+        if is_prime(n):
+            yield (n, 1)
+            break
+        for m in primes_upto(n // 2):
             f, _, k = factor(n, m)
             if k:
                 yield (m, k)
                 n = f
                 break
-        else:
-            yield (n, 1)
 
 def factor_count(n, upto=None):
     s = 0
     for _, k in factors(n):
         s += k
-        if upto and s >= upto:
+        if upto and s > upto:
             break
     return s
 
@@ -59,4 +61,7 @@ def divisors(t):
 if __name__ == '__main__':
     print list(factors(4))
     print list(factors(7))
+    print list(factors(27))
+    print list(factors(30))
     print list(factors(100))
+    print list(factors(64 * 3 * 5))
