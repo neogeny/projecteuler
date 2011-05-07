@@ -9,7 +9,7 @@ def count_numbers_with_factors(k, m):
     for i in xrange(4, m):
         if factor_count(i, upto=k) == k:
             c += 1
-        if not (i % 10 ** 4): print '.', i
+        if not (i % 10 ** 5): print '.', i // 10 ** 5
     return c
 
 if __name__ == '__main__':
