@@ -1,17 +1,19 @@
 # -*- encoding:utf-8 -*-i
 """
 """
+import pyximport; pyximport.install()
+from timeit import timeit
+from libeuler187 import *
 
-from factorization import factor_count
-
-def count_numbers_with_factors(k, m):
-    c = 0
-    for i in xrange(4, m):
-        if factor_count(i, upto=k) == k:
-            c += 1
-        if not (i % 10 ** 5): print '.', i // 10 ** 5
-    return c
+istmt="""from libeuler187 import *
+"""
+calls = [
+    'print count_numbers_with_factors(2, 30)',
+    'print count_numbers_with_factors(2, 10 ** 2)',
+    'print count_numbers_with_factors_fast(2, 10 ** 2)',
+    'print count_numbers_with_factors_fast(2, 10 ** 8)'
+    ]
 
 if __name__ == '__main__':
-    print count_numbers_with_factors(2, 30)
-    print count_numbers_with_factors(2, 10 ** 8)
+    for c in calls:
+        print timeit(c, setup=istmt, number=2)
