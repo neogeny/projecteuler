@@ -1,7 +1,8 @@
+import cython
 from math import sqrt
 from bisect import bisect_left
 from itertools import count
-
+if cython.compiled: print __name__
 
 __primes = [
            2, 3, 5, 7,
