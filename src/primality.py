@@ -1,8 +1,6 @@
-import cython
 from math import sqrt
-from bisect import bisect_left
+from bisect import bisect
 from itertools import count
-if cython.compiled: print __name__
 
 __primes = [
            2, 3, 5, 7,
@@ -27,7 +25,7 @@ def nth_prime(n):
 
     n -= len(__primes)
     k = __primes[-1]
-    limit = 1 + bisect_left(__primes, int(sqrt(k)))
+    limit = 1 + bisect(__primes, int(sqrt(k)))
     while n > 0:
         k += 2
         while __primes[limit] ** 2 < k:
@@ -40,7 +38,7 @@ def nth_prime(n):
 
 def is_prime(n):
     if n <= __primes[-1]:
-        i = bisect_left(__primes, n)
+        i = bisect(__primes, n)
         return __primes[i] == n
 
     for k in count(len(__primes) + 1):
@@ -62,7 +60,27 @@ def primes_upto(m):
         else:
             break
 
+def sieve_upto(m):
+    sieve = (m + 1) * [0]
+    for p in xrange(2, m + 1):
+        if not sieve[p]:
+            yield p
+            for j in xrange(m // p + 1):
+                sieve[j * p] += 1
+#            t = j
+#            while t and t % p == 0:
+#                sieve[j * p] += 1
+#                t = t // p;
+
+def test(pr):
+    N = 10 ** 6
+    s = 0
+    for p in pr(N):
+        s += 1
+#        assert is_prime(p)
+    print s
 
 if __name__ == '__main__':
-    for p in primes_upto(1000000):
-        assert is_prime(p)
+    from timeit import timeit
+    print timeit('test(primes_upto)', 'from primality import *', number=2)
+    print timeit('test(sieve_upto)', 'from primality import *', number=2)

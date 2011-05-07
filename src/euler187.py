@@ -3,15 +3,15 @@
 """
 import pyximport; pyximport.install()
 from timeit import timeit
-from libeuler187 import *
+#import libeuler187 as lib
 
-istmt="""from libeuler187 import *
+istmt = """import libeuler187 as lib
 """
 calls = [
-    'print count_numbers_with_factors(2, 30)',
-    'print count_numbers_with_factors(2, 10 ** 2)',
-    'print count_numbers_with_factors_fast(2, 10 ** 2)',
-    'print count_numbers_with_factors_fast(2, 10 ** 8)'
+    'print lib.count_numbers_with_factors(2, 30)',
+    'print lib.count_numbers_with_factors(2, 10 ** 2)',
+    'print lib.count_numbers_with_factors_fast(2, 10 ** 2)',
+    'print lib.count_numbers_with_factors_fast(2, 10 ** 8)'
     ]
 
 if __name__ == '__main__':
