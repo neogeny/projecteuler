@@ -5,7 +5,7 @@ from Cython.Distutils import build_ext
 setup(
     cmdclass = {'build_ext': build_ext},
     ext_modules = [
-        Extension("libeuler187", ["libeuler187.py"]),
-        Extension("primality", ["libeuler187.py"])
+        Extension("libeuler187", ["libeuler187.pyx"]),
+        Extension("primality", ["primality.py"])
     ]
 )
