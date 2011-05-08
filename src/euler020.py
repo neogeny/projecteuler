@@ -7,13 +7,12 @@ and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 
 Find the sum of the digits in the number 100!
 """
-from operator import mul
-def fact(n):
-    return reduce(mul,xrange(2,n+1),1)
+from series import factorial
+from digits import digits
 
 def sumdigits(n):
-    return sum(int(c) for c in str(n))
+    return sum(digits(n))
 
 if __name__ == '__main__':
-    print sumdigits(fact(10))
-    print sumdigits(fact(100))
+    print sumdigits(factorial(10))
+    print sumdigits(factorial(100))

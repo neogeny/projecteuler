@@ -18,7 +18,7 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 """
 from primality import primes_upto
 
-TARGET=1000
+TARGET = 1000
 
 def long_division_pattern(d):
     seen = {}
@@ -27,13 +27,12 @@ def long_division_pattern(d):
     while r:
         k += 1
         seen[r] = k
-        digit, r = divmod(r*10, d)
+        r = r * 10 % d
         if r in seen:
-           return k - seen[r] 
+            return k - seen[r]
     return 0
 
 def find_longest_recurring(m):
-    firstval = lambda p: p[0]
     return max((long_division_pattern(i), i) for i in primes_upto(m))
 
 if __name__ == '__main__':
