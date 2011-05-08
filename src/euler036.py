@@ -15,11 +15,11 @@ def to_binary(n):
 def dec_and_bin_palindromes(m):
     for n in xrange(1, m, 2):
         if is_palindrome(n) and is_palindrome(to_binary(n)):
+            print n, to_binary(n)
             yield n
 
+def sum_dec_and_bin_palindromes(m):
+    return sum(x for x in dec_and_bin_palindromes(m))
+
 if __name__ == '__main__':
-    s = 0
-    for x in dec_and_bin_palindromes(10 ** 6):
-        s += x
-        print x, to_binary(x)
-    print 'sum:', s
+    print sum_dec_and_bin_palindromes(10 ** 6)
