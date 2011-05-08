@@ -26,7 +26,7 @@ def unortodox_denom(d, lower):
                 nr = int(ns.replace(x,'',1))
                 dr = int(ds.replace(x,'',1))
                 if nr and dr and f == frac(nr, dr):
-                    print x,ns,ds,f
+#                    print x,ns,ds,f
                     return f
 
 def unortodox_fractions(k):
