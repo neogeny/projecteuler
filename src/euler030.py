@@ -14,9 +14,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 """
 
 from itertools import count
-
-def digits(n):
-    return (int(c) for c in str(n))
+from digits import digits
 
 def sum_power_of_digits(n, k):
     return sum(x ** k for x in digits(n))

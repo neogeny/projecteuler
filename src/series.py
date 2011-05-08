@@ -1,3 +1,10 @@
+from operator import mul
+from memoization import memoize
+
+@memoize
+def factorial(n):
+    return reduce(mul, xrange(2, n + 1), 1)
+
 def all_fibs():
     a = b = 1
     while True:
