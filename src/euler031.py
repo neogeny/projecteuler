@@ -19,18 +19,18 @@ def add_change(amount, denominations):
         d = denominations[-1]
         denominations = denominations[:-1]
         for i in xrange(1 + amount // d):
-            for w in add_change(amount - i*d, denominations):
+            for w in add_change(amount - i * d, denominations):
                 if w is not None:
                     if i:
                         yield [(i, d)] + w
                     else:
                         yield w
-        
+
 
 if __name__ == '__main__':
     ways = 0
-    for w in add_change(200, [1,2,5,10,20,50,100,200]):
-        assert 200 == sum(n*d for n,d in w)
+    for w in add_change(200, [1, 2, 5, 10, 20, 50, 100, 200]):
+        assert 200 == sum(n * d for n, d in w)
         print w
         ways += 1
     print ways

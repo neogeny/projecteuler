@@ -23,17 +23,17 @@ def unortodox_denom(d, lower):
         ns = str(n)
         for x in digits:
             if x in ns:
-                nr = int(ns.replace(x,'',1))
-                dr = int(ds.replace(x,'',1))
+                nr = int(ns.replace(x, '', 1))
+                dr = int(ds.replace(x, '', 1))
                 if nr and dr and f == frac(nr, dr):
 #                    print x,ns,ds,f
                     return f
 
 def unortodox_fractions(k):
-    lower = 10**(k-1)
-    upper = int(k*'9')
-    for n in xrange(lower, upper+1):
-        d =  unortodox_denom(n, lower)
+    lower = 10 ** (k - 1)
+    upper = int(k * '9')
+    for n in xrange(lower, upper + 1):
+        d = unortodox_denom(n, lower)
         if d:
             yield d
 
