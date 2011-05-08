@@ -1,5 +1,6 @@
 from operator import mul
 from memoization import memoize
+from functools import reduce
 
 @memoize
 def factorial(n):
