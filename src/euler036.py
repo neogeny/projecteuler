@@ -13,7 +13,7 @@ def to_binary(n):
     return '{:b}'.format(n)
 
 def dec_and_bin_palindromes(m):
-    for n in xrange(m):
+    for n in xrange(1, m, 2):
         if is_palindrome(n) and is_palindrome(to_binary(n)):
             yield n
 
