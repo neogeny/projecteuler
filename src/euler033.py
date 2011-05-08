@@ -30,7 +30,7 @@ def unortodox_denom(d, lower):
                     return f
 
 def unortodox_fractions(k):
-    lower = int(k*'1')
+    lower = 10**(k-1)
     upper = int(k*'9')
     for n in xrange(lower, upper+1):
         d =  unortodox_denom(n, lower)
