@@ -1,4 +1,4 @@
-I started solving the problems in `Project Euler`_ to excercise my mind, augment my knowledge in general math and algorithms, and to gain practice with specific programming languages, their standard libraries, and the many specialized libraries available out there.
+I started solving the problems in `Project Euler`_ to exercise my mind, augment my knowledge in general algorithms and maths in general, and to gain practice with specific programming languages, their standard libraries, and the many specialised libraries available out there.
 
 .. _Project Euler: http://projecteuler.net/
 
@@ -7,7 +7,9 @@ Most of the problems so far have been solved using Python_ and Cython_ even if t
 .. _Python: http://www.python.org/
 .. _Cython: http://cython.org/
 
-Unlike many of the programs found on the posts readable after you provide the solution on the project's web site, mine are written so that they would work if the specific conditions, like ranges, sums versus products versus single items, change. I also have tried to keep it simple and readable, which means very functional, some procedural, and no OO (at one time I thought I would never say something like that).
+Unlike many of the programs found on the posts readable after you provide the solution on the `project's`__ web site, mine are written so that they would work if the specific conditions, like ranges, sums versus products versus single items, change. I also have tried to keep it simple and readable, which means very functional, some procedural, and no OO (at one time I thought I would never say something like that).
+
+__ Project Euler_
 
 Unlike many of the mentioned programs, with every new problem I've gone back to similar or related problems and refactored the relevant code into libraries that are reused accross problems, and I've optimized the library code as harder problems have required it. The individual solutions are written in a way in which the code can be reused (which is what I did before deciding that refactoring to libraries was better).
 
