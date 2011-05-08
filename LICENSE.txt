@@ -1,0 +1,6 @@
+# Project Euler Problem 1
+# http://projecteuler.net/
+#
+# by Apalala <apalala@gmail.com>
+# (cc) Attribution-ShareAlike 
+# http://creativecommons.org/licenses/by-sa/3.0/
