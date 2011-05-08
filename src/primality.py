@@ -1,5 +1,5 @@
 from math import sqrt
-from bisect import bisect
+from bisect import bisect_left as bisect
 from itertools import count
 
 __primes = [
