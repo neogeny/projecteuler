@@ -6,16 +6,15 @@ There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73
 
 How many circular primes are there below one million?
 """
-from digits import digits
 from primality import is_prime, primes_upto
 
 def rotations(n):
-    d = list(digits(n))
+    d = str(n)
     result = []
     for i in xrange(len(d)):
         r = d[i:] + d[:i]
         result.append(r)
-    return [int(''.join(r)) for r in result]
+    return [int(r) for r in result]
 
 def is_circular_prime(n):
     return all(is_prime(r) for r in rotations(n))
