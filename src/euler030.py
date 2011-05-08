@@ -13,23 +13,28 @@ The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 """
 
+from itertools import count
+
 def digits(n):
     return (int(c) for c in str(n))
 
 def sum_power_of_digits(n, k):
     return sum(x ** k for x in digits(n))
 
-def numbers_that_sum_power_of_digits(m, k):
-    for n in xrange(2, m):
+def numbers_that_sum_power_of_digits(k):
+    for n in count(2):
+        d = list(digits(n))
+        if len(d) * (9 ** k) < n:
+            break
         if n == sum_power_of_digits(n, k):
             yield n
 
-def sum_of_numbers_that_sum_power_of_digits(m, k):
+def sum_of_numbers_that_sum_power_of_digits(k):
     s = 0
-    for n in numbers_that_sum_power_of_digits(m, k):
+    for n in numbers_that_sum_power_of_digits(k):
         s += n
         print n, s
     return s
 
 if __name__ == '__main__':
-    print sum_of_numbers_that_sum_power_of_digits(10 ** 6, 5)
+    print sum_of_numbers_that_sum_power_of_digits(5)
