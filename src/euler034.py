@@ -17,7 +17,7 @@ def list_sum_fact_digits():
     f9 = factorial(9)
     for n in count(3):
         k = len(str(n))
-        if k*f9 < 9*10**k:
+        if k * f9 < 9 * 10 ** k:
             break
         if n == sum_fact_digits(n):
             print n

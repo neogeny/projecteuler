@@ -25,4 +25,4 @@ def count_circular_primes(m):
 if __name__ == '__main__':
     print rotations(197)
     print is_circular_prime(197)
-    print count_circular_primes(10**6)
+    print count_circular_primes(10 ** 6)
