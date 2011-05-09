@@ -1,5 +1,15 @@
-# -*- encoding:utf-8 -*-i
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 33
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
 The fraction 49/98 is a curious fraction, as an inexperienced mathematician in attempting to simplify it may incorrectly believe that 49/98 = 4/8, which is correct, is obtained by cancelling the 9s.
 
 We shall consider fractions like, 30/50 = 3/5, to be trivial examples.

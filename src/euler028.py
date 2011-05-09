@@ -1,5 +1,15 @@
-# -*- encoding:utf-8 -*-i
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 28
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
 Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:
 
 21 22 23 24 25
@@ -17,11 +27,11 @@ from math import sqrt
 def spiral_diagonal_sum(m):
     diag_no = 1
     diag_sum = 1
-    for r in range(1, 1+m // 2):
-        diff = 2*r
+    for r in range(1, 1 + m // 2):
+        diff = 2 * r
         for i in range(4):
             diag_no += diff
-            diag_sum+=diag_no
+            diag_sum += diag_no
 #            print diag_sum,diag_no,diff,r
     return diag_sum
 

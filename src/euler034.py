@@ -1,5 +1,14 @@
-# -*- encoding:utf-8 -*-i
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 34
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
 
 Find the sum of all numbers which are equal to the sum of the factorial of their digits.

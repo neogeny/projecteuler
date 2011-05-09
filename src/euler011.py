@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 11
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
 """
 SGRID = """
@@ -31,36 +41,36 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 What is the greatest product of four adjacent numbers in any direction (up, down, left, right, or diagonally) in the 20×20 grid?
 """
 
-GRID=[line.split() for line in SGRID.split('\n')[1:-1]]
-GRID=[[int(s) for s in line] for line in GRID]
+GRID = [line.split() for line in SGRID.split('\n')[1:-1]]
+GRID = [[int(s) for s in line] for line in GRID]
 
 from functools import reduce
 
 def prod(a):
-    def mul(x,y): return x*y 
-    return reduce(mul,a,1)
+    def mul(x, y): return x * y
+    return reduce(mul, a, 1)
 
 def row(g, i, j, n):
-    return g[i][j:j+n]
+    return g[i][j:j + n]
 
 def column(g, i, j, n):
-    return [g[i+o][j] for o in xrange(n) if i+o < len(g)]
+    return [g[i + o][j] for o in xrange(n) if i + o < len(g)]
 
 def diagonal(g, i, j, n):
-    return [g[i+o][j+o] for o in xrange(n) 
-                if i+o < len(g) and j+o < len(g[i+o])
+    return [g[i + o][j + o] for o in xrange(n)
+                if i + o < len(g) and j + o < len(g[i + o])
             ]
 
 def diagonal2(g, i, j, n):
-    return [g[i+o][j-o] for o in xrange(n)
-                if i+o < len(g) and j-o >= 0
+    return [g[i + o][j - o] for o in xrange(n)
+                if i + o < len(g) and j - o >= 0
             ]
 
 def maxprod(g, n):
     result = 0
     for i in xrange(len(g)):
         for j in xrange(len(g[i])):
-            result = max(result, 
+            result = max(result,
                         prod(row(g, i, j, n)),
                         prod(column(g, i, j, n)),
                         prod(diagonal(g, i, j, n)),

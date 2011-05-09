@@ -1,5 +1,15 @@
-# -*- encoding:utf-8 -*-i
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 31
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
 In England the currency is made up of pound, £, and pence, p, and there are eight coins in general circulation:
 
     1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p).

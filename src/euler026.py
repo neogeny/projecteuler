@@ -1,5 +1,15 @@
+#!/usr/bin/env python
 # -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 26
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
 A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions with denominators 2 to 10 are given:
 
     1/2 =   0.5

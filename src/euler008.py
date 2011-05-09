@@ -1,6 +1,17 @@
-'''
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
+"""
+Solution to Project Euler Problem 8
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 Find the greatest product of five consecutive digits in the 1000-digit number.
-'''
+"""
+
 STARGET = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843

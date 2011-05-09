@@ -1,5 +1,15 @@
-# -*- encoding:utf-8 -*-i
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 30
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
 Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
 
     1634 = 14 + 64 + 34 + 44
