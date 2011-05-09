@@ -1,5 +1,14 @@
+#!/usr/bin/env python
 # -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 50
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 The prime 41, can be written as the sum of six consecutive primes_upto:
 41 = 2 + 3 + 5 + 7 + 11 + 13
 

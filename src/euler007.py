@@ -1,4 +1,14 @@
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 7
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, 
 we can see that the 6th prime is 13.
 

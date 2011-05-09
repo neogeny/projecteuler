@@ -1,5 +1,14 @@
-# -*- encoding:utf-8 -*-i
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
 """
+Solution to Project Euler Problem 27
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 Euler published the remarkable quadratic formula:
 
 n² + n + 41
@@ -22,19 +31,19 @@ from itertools import count
 from primality import is_prime
 
 def quadratic(n, a, b):
-    return n**2 + a*n + b
+    return n ** 2 + a * n + b
 
 def test_ab(a, b):
     for n in count(0):
-        if not is_prime(quadratic(n,a,b)):
+        if not is_prime(quadratic(n, a, b)):
             return n
 
 def find_ab(m):
-    for a in xrange(-m+1, m):
-        for b in xrange(-m+1, m):
-            yield (test_ab(a,b), a, b)
+    for a in xrange(-m + 1, m):
+        for b in xrange(-m + 1, m):
+            yield (test_ab(a, b), a, b)
 
 if __name__ == '__main__':
     longest = max(find_ab(1000))
     print longest
-    print longest[1]*longest[2]
+    print longest[1] * longest[2]

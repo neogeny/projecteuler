@@ -1,3 +1,16 @@
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
+"""
+Solution to Project Euler Problems
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
+"""
 from collections import namedtuple
 from copy import deepcopy
 from heapq import heappop as pop, heappush as push

@@ -1,5 +1,15 @@
-# -*- coding: utf-8 -*-
-'''
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
+"""
+Solution to Project Euler Problem 25
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+
 The Fibonacci sequence is defined by the recurrence relation:
 
     Fn = Fn−1 + Fn−2, where F1 = 1 and F2 = 1.
@@ -22,7 +32,7 @@ Hence the first 12 terms will be:
 The 12th term, F12, is the first term to contain three digits.
 
 What is the first term in the Fibonacci sequence to contain 1000 digits?
-'''
+"""
 from series import all_fibs
 
 if __name__ == '__main__':

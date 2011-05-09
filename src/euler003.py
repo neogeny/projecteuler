@@ -1,4 +1,16 @@
-# Find the largest prime factor of the given number
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
+
+"""
+Solution to Project Euler Problem 3
+http://projecteuler.net/
+
+by Apalala <apalala@gmail.com>
+(cc) Attribution-ShareAlike 
+http://creativecommons.org/licenses/by-sa/3.0/
+
+Find the largest prime factor of the given number
+"""
 TARGET = 600851475143
 
 def largest_prime_factor(n):
