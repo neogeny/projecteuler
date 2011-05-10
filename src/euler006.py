@@ -24,7 +24,13 @@ hundred natural numbers and the square of the sum.
 
 from series import sum_of_squares, square_of_sum
 
-TARGET = 100
+def ssq_sqs_diff(m):
+    return square_of_sum(m) - sum_of_squares(m)
+
+def test():
+    assert 2640 == ssq_sqs_diff(10)
 
 if __name__ == '__main__':
-    print square_of_sum(TARGET) - sum_of_squares(TARGET)
+    test()
+    print ssq_sqs_diff(100)
+

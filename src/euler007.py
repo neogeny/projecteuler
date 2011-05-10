@@ -17,6 +17,8 @@ What is the 10001st prime number?
 
 from primality import nth_prime
 
+def test():
+    assert 13 == nth_prime(6)
+
 if __name__ == '__main__':
-    print nth_prime(10001)
     print nth_prime(10001)

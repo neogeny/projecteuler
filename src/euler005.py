@@ -18,5 +18,12 @@ from factorization import mcm
 
 TARGET = 20
 
+def range_mcm(m):
+    return mcm(xrange(2, m + 1))
+
+def test():
+    assert 2520 == range_mcm(10)
+
 if __name__ == '__main__':
-    print mcm(xrange(TARGET))
+    test()
+    print range_mcm(TARGET)

@@ -27,7 +27,8 @@ def count_bean_moves(n):
         if all(bowls):
             return count
 
-for i in xrange(20):
-    n = 2 ** i + 1
-#    n = i+2
-    print n, count_bean_moves(n)
+if __name__ == '__main__':
+    for i in xrange(20):
+        n = 2 ** i + 1
+    #    n = i+2
+        print n, count_bean_moves(n)

@@ -1,5 +1,6 @@
-#Sun May 08 21:22:52 VET 2011
+#Mon May 09 22:06:42 VET 2011
 eclipse.preferences.version=1
+encoding//src/digits.py=utf-8
 encoding//src/euler001.py=utf-8
 encoding//src/euler002.py=utf-8
 encoding//src/euler003.py=utf-8
@@ -51,3 +52,4 @@ encoding//src/primality.py=utf-8
 encoding//src/series.py=utf-8
 encoding//src/setup.py=utf-8
 encoding//src/template.py=utf-8
+encoding//src/tests.py=utf-8

@@ -2,14 +2,14 @@
 # -*- encoding:utf-8 -*-
 
 """
-Solution to Project Euler Problems
+Solutions to Project Euler Problems
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-
+Factorization.
 """
 from itertools import combinations
 from primality import primes_upto, is_prime

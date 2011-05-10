@@ -14,12 +14,16 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 Find the sum of all the multiples of 3 or 5 below 1000.
 """
 
-def sum_of_3_or_5_div():
+def sum_of_3_or_5_div(m):
     sum = 0
-    for i in range(1000):
+    for i in xrange(m):
         if not (i % 3 and i % 5):
             sum += i
     return sum
 
+def test():
+    assert 23 == sum_of_3_or_5_div(10)
+
 if __name__ == '__main__':
-    print sum_of_3_or_5_div()
+    test()
+    print sum_of_3_or_5_div(1000)

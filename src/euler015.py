@@ -34,8 +34,6 @@ def count_routes(n, m):
     __seen[(m, n)] = result
     return result
 
-try:
+if __name__ == '__main__':
     for n in xrange(21):
         print n, count_routes(n, n)
-except KeyboardInterrupt:
-    pass

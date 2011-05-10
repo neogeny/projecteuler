@@ -9,6 +9,7 @@ by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
+Prime numbers.
 """
 from math import sqrt
 from bisect import bisect_left as bisect
