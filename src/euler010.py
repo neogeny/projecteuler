@@ -16,8 +16,6 @@ Find the sum of all the primes below two million.
 
 from primality import all_primes
 
-TARGET = 2 * 10 ** 6
-
 def sum_primes(up_to):
     result = 0
     for p in all_primes():
@@ -26,5 +24,8 @@ def sum_primes(up_to):
         result += p
     return result
 
+def test():
+    assert 17 == sum_primes(10)
+
 if __name__ == '__main__':
-    print sum_primes(TARGET)
+    print sum_primes(2 * 10 ** 6)
