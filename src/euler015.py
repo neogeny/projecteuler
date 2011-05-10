@@ -34,6 +34,9 @@ def count_routes(n, m):
     __seen[(m, n)] = result
     return result
 
+def test():
+    assert 6 == count_routes(2, 2)
+
 if __name__ == '__main__':
-    for n in xrange(21):
-        print n, count_routes(n, n)
+    test()
+    print count_routes(20, 20)
