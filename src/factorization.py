@@ -54,18 +54,18 @@ def mcm(numbers):
         result *= f ** k
     return result
 
-def multiples(q):
-    if not q:
+def multiples(factor_list):
+    if not factor_list:
         yield 1
     else:
-        n, k = q[0]
-        for j in multiples(q[1:]):
+        n, k = factor_list[0]
+        for j in multiples(factor_list[1:]):
             for i in xrange(1, k + 1):
                 yield n ** i * j
 
 def divisors(t):
-    f = factors(t)
-    for s in xrange(0, len(f) + 1):
+    f = list(factors(t))
+    for s in xrange(len(f) + 1):
         for c in combinations(f, s):
             for m in multiples(c):
                 yield m

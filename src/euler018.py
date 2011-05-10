@@ -9,7 +9,8 @@ by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
+By starting at the top of the triangle below and moving to adjacent numbers on 
+the row below, the maximum total from top to bottom is 23.
 
 3
 7 4
@@ -54,7 +55,16 @@ def bruteforce(triangle):
             T[i][j] += max(T[i + 1][j], T[i + 1][j + 1])
     return T[0][0]
 
+def test():
+    T = [[3],
+        [7, 4],
+        [2, 4 , 6, ],
+        [8, 5 , 9, 3]
+        ]
+    assert 23 == bruteforce(T)
+
 if __name__ == '__main__':
+    test()
     graph, start, stop = build_graph_from_triangle(TRIANGLE)
     print find_max_path(graph, start, stop)
     print bruteforce(TRIANGLE)

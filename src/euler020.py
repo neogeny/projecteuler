@@ -22,6 +22,10 @@ from digits import digits
 def sumdigits(n):
     return sum(digits(n))
 
+def test():
+    assert 27 == sumdigits(factorial(10))
+
 if __name__ == '__main__':
-    print sumdigits(factorial(10))
+    test()
+
     print sumdigits(factorial(100))

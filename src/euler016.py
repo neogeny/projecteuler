@@ -9,9 +9,16 @@ by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-215 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
 
 What is the sum of the digits of the number 21000?
 """
+
+def sum_pow2_digist(e):
+    return sum(int(c) for c in str(2 ** e))
+def test():
+    assert 26 == sum_pow2_digist(15)
+
 if __name__ == '__main__':
-    print sum(int(c) for c in str(2 ** 1000))
+    test()
+    print sum_pow2_digist(1000)
