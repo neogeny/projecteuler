@@ -16,16 +16,17 @@ from os import path
 from timeit import timeit
 
 if __name__ == '__main__':
+    total = 0
     for filename in sorted(glob('euler*.py')):
         name, _ = path.splitext(filename)
-        __import__(name)
         try:
-            print name,
             t = timeit('test()', 'from ' + name + ' import test', number=1)
-            print '{:4.6f}'.format(t)
+            total += t
+#            print name, '{:4.6f}'.format(t)
         except KeyboardInterrupt:
             break
         except ImportError:
-            print 'untested'
+            print name, 'untested'
         except AssertionError as ae:
-            print 'FAILED!'
+            print name, 'FAILED!'
+    print 'total time:', total

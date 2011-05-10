@@ -115,5 +115,8 @@ NUMBERS = [
 53503534226472524250874054075591789781264330331690
 ]
 
+def test():
+    pass
+
 if __name__ == '__main__':
     print str(sum(NUMBERS))[:10]

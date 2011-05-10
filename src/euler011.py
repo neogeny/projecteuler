@@ -78,5 +78,9 @@ def maxprod(g, n):
                         )
     return result
 
+def test():
+    assert 1788696 == prod(diagonal(GRID, 6, 8, 4))
+
 if __name__ == '__main__':
+    test()
     print maxprod(GRID, 4)
