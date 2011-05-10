@@ -23,5 +23,9 @@ if __name__ == '__main__':
             print name,
             t = timeit('test()', 'from ' + name + ' import test', number=1)
             print '{:4.6f}'.format(t)
+        except KeyboardInterrupt:
+            break
         except ImportError:
             print 'untested'
+        except AssertionError as ae:
+            print 'FAILED!'
