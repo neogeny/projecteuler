@@ -2,14 +2,14 @@
 # -*- encoding:utf-8 -*-
 
 """
-Solution to Project Euler Problem
+Solution to Project Euler Problem 187
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-
+Cast as a library so Cython can be used.
 """
 from factorization import factor_count
 from primality import primes_upto

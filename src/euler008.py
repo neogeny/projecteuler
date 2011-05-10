@@ -43,6 +43,10 @@ def largest_product_of(n, m):
     prod_n_at = lambda k : reduce(mul, m[k:k + n], 1)
     return max(prod_n_at(i) for i in xrange(len(m) - n))
 
+def test():
+    assert 9 == largest_product_of(1, TARGET)
+
 if __name__ == '__main__':
+    test()
     print largest_product_of(5, TARGET)
 

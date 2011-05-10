@@ -9,7 +9,7 @@ by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-
+Mthematical series.
 """
 from operator import mul
 from memoization import memoize

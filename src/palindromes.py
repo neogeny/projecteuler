@@ -9,7 +9,7 @@ by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-
+Palindromes.
 """
 def is_palindrome(n):
     n = str(n)
