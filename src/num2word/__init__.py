@@ -27,6 +27,7 @@ Notes:
 History:
     0.2: n2w, to_card, to_ord, to_ordnum now imported correctly
 '''
+import sys
 import locale as _locale
 
 # Correct omissions in locale:
@@ -40,13 +41,15 @@ for _loc in [_locale.getlocale(), _locale.getdefaultlocale()]:
     if _lang:
         _lang = _locdict.get(_lang, _lang)
         _lang = _lang.upper()
-    
+
         _modules.append("num2word_" + _lang)
         _modules.append("num2word_" + _lang.split("_")[0])
 
 for _module in _modules:
     try:
-        n2wmod = __import__(_module)
+        _name = 'num2word.' + _module
+        __import__(_name)
+        n2wmod = sys.modules[_name]
         break
     except ImportError:
         pass
