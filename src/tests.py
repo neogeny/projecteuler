@@ -17,11 +17,13 @@ from timeit import timeit
 
 if __name__ == '__main__':
     total = 0
+    count = 0
     for filename in sorted(glob('euler*.py')):
         name, _ = path.splitext(filename)
         try:
             t = timeit('test()', 'from ' + name + ' import test', number=1)
             total += t
+            count += 1
 #            print name, '{:4.6f}'.format(t)
         except KeyboardInterrupt:
             break
@@ -29,4 +31,4 @@ if __name__ == '__main__':
             print name, 'untested'
         except AssertionError as ae:
             print name, 'FAILED!'
-    print 'total time:', total
+    print 'total time for ', count, ' problems is:', total
