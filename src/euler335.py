@@ -27,6 +27,9 @@ def count_bean_moves(n):
         if all(bowls):
             return count
 
+def test():
+    assert False
+
 if __name__ == '__main__':
     for i in xrange(20):
         n = 2 ** i + 1
