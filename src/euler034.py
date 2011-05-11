@@ -29,9 +29,11 @@ def list_sum_fact_digits():
         if k * f9 < 9 * 10 ** k:
             break
         if n == sum_fact_digits(n):
-            print n
             yield n
 
+def test():
+    assert 145 == sum_fact_digits(145)
+
 if __name__ == '__main__':
-    print sum_fact_digits(145)
+    test()
     print sum(list_sum_fact_digits())
