@@ -55,8 +55,14 @@ def _known_prime(n):
     return False
 
 def is_prime(n):
+    if n != 2 and not n % 2:
+        return False
+
     if _known_prime(n):
         return True
+
+    if n < __primes[-1]:
+        return False
 
     for k in count(len(__primes) + 1):
         p = nth_prime(k)
