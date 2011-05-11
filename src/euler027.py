@@ -56,8 +56,8 @@ def ab_prime_generators(i, j):
         for a in xrange(i, j):
             if odd(a):
                 yield (1 + ab_generated_primes_len(a, b), a, b)
-#            else:
-#                yield (1, a, b)  # True == even(1**2 + 1 * a + b)
+            else:
+                yield (1, a, b)  # True == even(1**2 + 1 * a + b)
 
 def ab_prime_generator_with_max_len(i, j):
     return max(ab_prime_generators(i, j))
