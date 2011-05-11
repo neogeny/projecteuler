@@ -13,6 +13,9 @@ Dealing with digits.
 """
 from memoization import memoize
 
+def seq2str(q):
+    return ''.join(q)
+
 def sdigits(n):
     return (c for c in str(n))
 
@@ -24,13 +27,13 @@ def last_k_digits(k, n):
 
 @memoize
 def digits_upto(k, i=0):
-    return ''.join(str(c) for c in xrange(i, min(9, k) + 1))
+    return seq2str(str(c) for c in xrange(i, min(9, k) + 1))
 
 def digits_downfrom(k, i=0):
-    return ''.join(reversed(digits_upto(k, 1)))
+    return digits_upto(k, 1)[::-1]
 
 def sorted_digits(n):
-    return ''.join(sorted(str(n)))
+    return seq2str(sorted(str(n)))
 
 def is_semi_pandigital(n):
     s = str(n)

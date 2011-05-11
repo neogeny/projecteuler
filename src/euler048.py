@@ -28,7 +28,9 @@ def n_digits_from_sum_of_powers(k, p):
         s = s + n_digits_from_power(k, i)
     return last_k_digits(k, s)
 
+def test():
+    assert 10405071317 == n_digits_from_sum_of_powers(15, 10)
+
 if __name__ == '__main__':
-    print n_digits_from_sum_of_powers(15, 10)
+    test()
     print n_digits_from_sum_of_powers(10, 1000)
-    print sum(x ** x for x in range(1, 1000 + 1)) % (10 ** 10)

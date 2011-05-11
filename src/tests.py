@@ -18,6 +18,7 @@ from timeit import timeit
 if __name__ == '__main__':
     total = 0
     count = 0
+    failed = 0
     for filename in sorted(glob('euler*.py')):
         name, _ = path.splitext(filename)
         try:
@@ -30,5 +31,6 @@ if __name__ == '__main__':
         except ImportError:
             print name, 'untested'
         except AssertionError as ae:
+            failed += 1
             print name, 'FAILED!'
-    print 'total time for ', count, ' problems is:', total
+    print 'total time for', count, 'problems,', failed, 'failed, is:', total
