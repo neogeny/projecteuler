@@ -35,8 +35,14 @@ What is the first term in the Fibonacci sequence to contain 1000 digits?
 """
 from series import all_fibs
 
-if __name__ == '__main__':
+def first_fib_with_digits(n):
     for i, f in enumerate(all_fibs()):
-        if len(str(f)) >= 1000:
-            print i + 1
-            break
+        if len(str(f)) >= n:
+            return i + 1
+
+def test():
+    assert 12 == first_fib_with_digits(3)
+
+if __name__ == '__main__':
+    test()
+    print first_fib_with_digits(1000)
