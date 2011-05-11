@@ -39,3 +39,7 @@ def is_semi_pandigital(n):
 def is_pandigital(n, k=9):
     return sorted_digits(n) == digits_upto(k, 1)
 
+def digit_rotations(n):
+    d = str(n)
+    for i in xrange(len(d)):
+        yield int(d[i:] + d[:i])
