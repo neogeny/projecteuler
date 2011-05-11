@@ -29,6 +29,10 @@ calls = [
     'print lib.count_numbers_with_factors_fast(2, 10 ** 8)'
     ]
 
+def test():
+    assert False
+
 if __name__ == '__main__':
+    test()
     for c in calls:
         print timeit(c, setup=istmt, number=2)

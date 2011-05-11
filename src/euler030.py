@@ -10,7 +10,8 @@ by Apalala <apalala@gmail.com>
 http://creativecommons.org/licenses/by-sa/3.0/
 
 
-Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
+Surprisingly there are only three numbers that can be written as the sum of 
+fourth powers of their digits:
 
     1634 = 14 + 64 + 34 + 44
     8208 = 84 + 24 + 04 + 84
@@ -20,7 +21,8 @@ As 1 = 14 is not a sum it is not included.
 
 The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 
-Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
+Find the sum of all the numbers that can be written as the sum of fifth powers 
+of their digits.
 """
 
 from itertools import count
@@ -41,8 +43,11 @@ def sum_of_numbers_that_sum_power_of_digits(k):
     s = 0
     for n in numbers_that_sum_power_of_digits(k):
         s += n
-        print n, s
     return s
 
+def test():
+    assert 19316 == sum_of_numbers_that_sum_power_of_digits(4)
+
 if __name__ == '__main__':
+    test()
     print sum_of_numbers_that_sum_power_of_digits(5)
