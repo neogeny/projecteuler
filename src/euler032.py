@@ -21,28 +21,14 @@ can be written as a 1 through 9 pandigital.
 HINT: Some products can be obtained in more than one way so be sure to only
 include it once in your sum.
 """
-from memoization import memoize
-
-@memoize
-def digits_upto(k, i=0):
-    return ''.join(str(c) for c in xrange(i, min(9, k) + 1))
-
-def sorted_digits(n):
-    return ''.join(sorted(str(n)))
-
-def is_semi_pandigital(n):
-    s = str(n)
-    return '0' not in s and len(s) == len(set(s))
-
-def is_pandigital(n, k=9):
-    return sorted_digits(n) == digits_upto(k, 1)
+from digits import is_pandigital, is_semi_pandigital, digits_downfrom
 
 def is_pandigital_product(a, b, n, k=9):
     return is_pandigital(str(a) + str(b) + str(n), k)
 
 
 def find_pandigital_products(k):
-    upper = int(''.join(reversed(digits_upto(k, 1)))[:-k // 2])
+    upper = int(digits_downfrom(k, 1)[:-k // 2])
     for a in xrange(2, upper):
         if not is_semi_pandigital(a): continue
         for b in xrange(a, upper):
@@ -54,8 +40,7 @@ def find_pandigital_products(k):
 
 
 def test():
-    assert '123456789' == digits_upto(9, 1)
-    assert '012345' == digits_upto(5)
+    assert '987654321' == digits_downfrom(9, 1)
     assert is_pandigital(978564231)
     assert is_pandigital(13452, 5)
     assert is_semi_pandigital(543)
