@@ -25,8 +25,6 @@ Which starting number, under one million, produces the longest chain?
 
 NOTE: Once the chain starts the terms are allowed to go above one million.
 """
-from memoization import memoize
-
 def next_collaz(n):
     if n % 2:
         return 3 * n + 1

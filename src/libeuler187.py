@@ -31,17 +31,6 @@ def count_numbers_with_factors_fast(k, m):
             c += 1
             if not (c % 10 ** 6): print '.', c // 10 ** 6
     return c
-from bisect import bisect
-from math import sqrt
-N = 10 ** 8
-
-# by logopetria
-#def count_numbers_with_factors_fastest(k, m):
-#    TOTAL = 0
-#    for x in range(bisect(PRIMES, sqrt(N))):
-#        p = PRIMES[x]
-#        TOTAL += bisect(PRIMES, N / p) - x
-#    return TOTAL
 
 if __name__ == '__main__':
     pass
