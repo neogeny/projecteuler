@@ -96,7 +96,7 @@ def sieve_upto(m):
 def test(pr):
     N = 10 ** 4
     s = 0
-    for p in pr(N):
+    for _p in pr(N):
         s += 1
 #        assert is_prime(p)
     print s

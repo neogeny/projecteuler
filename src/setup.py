@@ -13,7 +13,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 """
 from distutils.core import setup
 from distutils.extension import Extension
-from cython.Distutils import build_ext
+from cython.Distutils import build_ext #@UnresolvedImport
 
 setup(
     cmdclass={'build_ext': build_ext},

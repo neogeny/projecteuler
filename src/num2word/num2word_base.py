@@ -40,7 +40,7 @@ class Num2Word_Base(object):
         self.set_numwords()
 
         self.MAXVAL = 1000 * self.cards.order[0]
-        
+
 
     def set_numwords(self):
         self.set_high_numwords(self.high_numwords)
@@ -68,7 +68,7 @@ class Num2Word_Base(object):
         for elem in self.cards:
             if elem > value:
                 continue
-            
+
             out = []
             if value == 0:
                 div, mod = 1, 0
@@ -79,7 +79,7 @@ class Num2Word_Base(object):
                 out.append((self.cards[1], 1))
             else:
                 if div == value:  # The system tallies, eg Roman Numerals
-                    return [(div * self.cards[elem], div*elem)]                    
+                    return [(div * self.cards[elem], div * elem)]
                 out.append(self.splitnum(div))
 
             out.append((self.cards[elem], elem))
@@ -105,16 +105,16 @@ class Num2Word_Base(object):
 
         if value >= self.MAXVAL:
             raise OverflowError(self.errmsg_toobig % (value, self.MAXVAL))
-        
+
 
         val = self.splitnum(value)
-        words, num = self.clean(val)
+        words, _num = self.clean(val)
         return self.title(out + words)
 
 
     def to_cardinal_float(self, value):
         try:
-            float(value) == value
+            float(value) == value #@NoEffect
         except (ValueError, TypeError, AssertionError):
             raise TypeError(self.errmsg_nonnum % value)
 
@@ -125,7 +125,7 @@ class Num2Word_Base(object):
         if self.precision:
             out.append(self.title(self.pointword))
 
-        for i in range(self.precision):
+        for _i in range(self.precision):
             post *= 10
             curr = int(post)
             out.append(str(self.to_cardinal(curr)))
@@ -175,9 +175,9 @@ class Num2Word_Base(object):
 
     def verify_ordinal(self, value):
         if not value == long(value):
-            raise TypeError, self.errmsg_floatord %(value)
+            raise TypeError, self.errmsg_floatord % (value)
         if not abs(value) == value:
-            raise TypeError, self.errmsg_negord %(value)
+            raise TypeError, self.errmsg_negord % (value)
 
 
     def verify_num(self, value):
@@ -187,8 +187,8 @@ class Num2Word_Base(object):
     def set_wordnums(self):
         pass
 
-            
-    def to_ordinal(value):
+
+    def to_ordinal(self, value):
         return self.to_cardinal(value)
 
 
@@ -259,6 +259,6 @@ class Num2Word_Base(object):
             _ordnum = self.to_ordinal_num(value)
         except:
             _ordnum = "invalid"
-            
+
         print ("For %s, card is %s;\n\tord is %s; and\n\tordnum is %s." %
                     (value, _card, _ord, _ordnum))
