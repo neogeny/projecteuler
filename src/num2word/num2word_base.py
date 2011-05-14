@@ -140,7 +140,7 @@ class Num2Word_Base(object):
 
     def clean(self, val):
         out = val
-        while len(val) <> 1:
+        while len(val) != 1:
             out = []
             curr, next = val[:2]
             if isinstance(curr, tuple) and isinstance(next, tuple):
