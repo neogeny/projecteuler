@@ -13,11 +13,11 @@ Mthematical series.
 """
 from operator import mul
 from memoization import memoize
-from functools import reduce
+import math
 
 @memoize
 def factorial(n):
-    return reduce(mul, xrange(2, n + 1), 1)
+    return math.factorial(n)
 
 def all_fibs():
     a = b = 1
