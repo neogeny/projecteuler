@@ -24,24 +24,27 @@ What is the largest 1 to 9 pandigital 9-digit number that can be formed as the c
 """
 from digits import is_pandigital
 
-# This solution is uninteresting.
-# It uses a lot of analytical cheats
-def find_pandigital_product():
-    p, m = 9, 918273645 # this is the known winning pair
+def product_string(n, k=9):
+    d = str(n)
+    for i in xrange(2, k):
+        if len(d) >= k:
+            break
+        d += str(i * n)
+    return d
+
+def find_pandigital_product(init):
+    p, m = init, int(product_string(init))
     for n in xrange(91, 9876):
-        d = str(n)
-        for i in xrange(2, 5):
-            d += str(i * n)
-            if len(d) >= 9:
-                if int(d) > m and is_pandigital(d):
-                    p, m = n, int(d)
-                break
+        d = product_string(n)
+        if is_pandigital(d) and int(d) > m:
+            p, m = n, int(d)
     return p, m
 
 
 def test():
-    pass
+    assert '918273645' == product_string(9)
+    assert is_pandigital(product_string(9))
 
 if __name__ == '__main__':
     test()
-    print find_pandigital_product()
+    print find_pandigital_product(init=9)
