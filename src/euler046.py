@@ -2,7 +2,7 @@
 # -*- encoding:utf-8 -*-
 
 """
-Solution to Project Euler Problem
+Solution to Project Euler Problem 46
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
