@@ -11,7 +11,6 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Mthematical series.
 """
-from operator import mul
 import math
 from math import sqrt
 from itertools import count
