@@ -40,33 +40,36 @@ def square_of_sum(n):
     return (n ** 2 * (n + 1) ** 2) // 4
 
 def is_triangle(n):
+    assert n > 0
     c = (-1 + sqrt(1 + 8 * n)) / 2
     return c == int(c)
 
-def triangles(upto=None):
+def triangles():
     for n in count(1):
-        if upto and n > upto:
-            break
-        yield n * (n + 1) / 2
+        yield n * (n + 1) // 2
 
 def is_pentagonal(n):
+    assert n > 0
     c = (1 + sqrt(1 + 3 * 8 * n)) / 6
     return c == int(c)
 
+def pentagonal(n):
+    return n * (3 * n - 1) // 2
+
 def pentagonals(upto=None):
     for n in count(1):
-        if upto and n > upto:
+        p = pentagonal(n)
+        if upto is not None and p > upto:
             break
-        yield n * (3 * n - 1) / 2
+        yield p
 
 def is_exagonal(n):
+    assert n > 0
     c = (1 + sqrt(1 + 8 * n)) / 4
     return c == int(c)
 
-def exagonals(upto=None):
+def exagonals():
     for n in count(1):
-        if upto and n > upto:
-            break
         yield n * (2 * n - 1)
 
 def test():
@@ -80,3 +83,6 @@ def test():
 
 if __name__ == '__main__':
     test()
+    print list(pentagonals(1))
+    print list(pentagonals(5))
+    print list(pentagonals(100))
