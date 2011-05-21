@@ -12,7 +12,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 Factorization.
 """
 from itertools import combinations
-from primality import primes_upto, is_prime
+from primality import primes_upto, known_prime
 
 def factor(n, m):
     k = 0
@@ -26,15 +26,24 @@ def factor(n, m):
 
 def factors(n):
     while n > 1:
-        if is_prime(n):
+        if known_prime(n):
             yield (n, 1)
             break
         for m in primes_upto(n // 2):
-            f, _, k = factor(n, m)
-            if k:
-                yield (m, k)
-                n = f
+            residue, _m, times = factor(n, m)
+            if times:
+                yield m, times
+                n = residue
                 break
+        else:
+            yield (n, 1)
+            break
+
+def first_factor(n):
+    return factors(n).next()[0]
+
+def is_prime(n):
+    return n == first_factor(n)
 
 def factor_count(n, upto=None):
     s = 0
@@ -72,9 +81,12 @@ def divisors(t):
 
 
 if __name__ == '__main__':
-    print list(factors(4))
-    print list(factors(7))
-    print list(factors(27))
-    print list(factors(30))
-    print list(factors(100))
-    print list(factors(64 * 3 * 5))
+    def list_factors(n):
+        print n, list(factors(n))
+    list_factors(4)
+    list_factors(7)
+    list_factors(27)
+    list_factors(30)
+    list_factors(100)
+    list_factors(131)
+    list_factors(64 * 3 * 5)
