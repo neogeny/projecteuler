@@ -23,14 +23,13 @@ import libeuler187 as lib #@UnusedImport
 istmt = """import libeuler187 as lib
 """
 calls = [
-    'print lib.count_numbers_with_factors(2, 30)',
     'print lib.count_numbers_with_factors(2, 10 ** 2)',
     'print lib.count_numbers_with_factors_fast(2, 10 ** 2)',
     'print lib.count_numbers_with_factors_fast(2, 10 ** 8)'
     ]
 
 def test():
-    assert True
+    assert 10 == lib.count_numbers_with_factors(2, 30)
 
 if __name__ == '__main__':
     test()
