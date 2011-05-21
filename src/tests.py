@@ -11,11 +11,22 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 
 """
+import sys
 from glob import glob
 from os import path
 from timeit import timeit
 
+def test_assertions_on():
+    try:
+        assert False
+        print 'Please turn on assertions!'
+        sys.exit()
+    except AssertionError:
+        pass
+
+
 if __name__ == '__main__':
+    test_assertions_on()
     total = 0
     count = 0
     failed = 0
