@@ -28,7 +28,10 @@ def perimeter_combinations_for(limit):
 def test():
     assert 3 == len(perimeter_combinations_for(125)[120])
 
+def run():
+    print max((len(s), p) for p,s in perimeter_combinations_for(1001).items())
+
 if __name__ == '__main__':
     test()
-    print max((len(s), p) for p,s in perimeter_combinations_for(1001).items())
+    run()
 
