@@ -63,11 +63,7 @@ def is_prime(n):
     elif n < __primes[-1]:
         return False
     else:
-        for p in primes_upto(n // 2):
-            if not n % p:
-                return False
-        return True
-
+        return all(n % p for p in primes_upto(sqrt(n)))
 
 def all_primes():
     for n in count(1):

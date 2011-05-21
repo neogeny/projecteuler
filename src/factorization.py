@@ -11,6 +11,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Factorization.
 """
+from math import sqrt
 from itertools import combinations
 from primality import primes_upto, known_prime
 
@@ -29,7 +30,7 @@ def factors(n):
         if known_prime(n):
             yield (n, 1)
             break
-        for m in primes_upto(n // 2):
+        for m in primes_upto(sqrt(n)):
             residue, _m, times = factor(n, m)
             if times:
                 yield m, times
