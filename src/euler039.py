@@ -26,7 +26,8 @@ def perimeter_combinations_for(limit):
     return perims
 
 def test():
-    assert 3 == len(perimeter_combinations_for(125)[120])
+    combs = set(((20,48,52), (24,45,51), (30,40,50)))
+    assert combs  == perimeter_combinations_for(125)[120]
 
 def run():
     print max((len(s), p) for p,s in perimeter_combinations_for(1001).items())
