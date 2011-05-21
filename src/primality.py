@@ -48,28 +48,25 @@ def nth_prime(n):
             n -= 1
     return __primes[-1]
 
-def _known_prime(n):
+def known_prime(n):
     if n <= __primes[-1]:
         i = bisect(__primes, n)
         return __primes[i] == n
     return False
 
 def is_prime(n):
-    if n != 2 and not n % 2:
+    n = abs(n)
+    if n < 2:
         return False
-
-    if _known_prime(n):
+    elif known_prime(n):
         return True
-
-    if n < __primes[-1]:
+    elif n < __primes[-1]:
         return False
-
-    for k in count(len(__primes) + 1):
-        p = nth_prime(k)
-        if p == n:
-            return True
-        elif p > n:
-            return False
+    else:
+        for p in primes_upto(n // 2):
+            if not n % p:
+                return False
+        return True
 
 
 def all_primes():
