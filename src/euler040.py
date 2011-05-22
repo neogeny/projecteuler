@@ -25,9 +25,9 @@ from functools import reduce
 from operator import mul
 
 def counting_digits():
-    for n in count(1):
-        for c in str(n):
-            yield c
+    for number in count(1):
+        for digit in str(number):
+            yield digit
 
 def select_digits(selectors):
     s = list(sorted(selectors))
@@ -38,7 +38,6 @@ def select_digits(selectors):
             if i == s[0]:
                 yield int(d)
             s = s[1:]
-
 
 def test():
     assert [1] == list(select_digits([12]))
