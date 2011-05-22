@@ -15,6 +15,9 @@ http://creativecommons.org/licenses/by-sa/3.0/
 def test():
     assert 0 == 1
 
+def run():
+    pass
+
 if __name__ == '__main__':
     test()
-
+    run()
