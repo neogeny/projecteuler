@@ -11,6 +11,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 
 """
+import turtle
 
 def heighway_dragon(n):
     def prod(c):
@@ -50,10 +51,30 @@ def draw_dragon(n, steps = None):
             pass
     return x, y
             
+def cool_draw_dragon(n, steps = None):
+    FWD = 4
+    k = 0
+    turtle.reset()
+    turtle.pencolor('red')
+    turtle.hideturtle()
+    turtle.delay(0)
+    for instr in heighway_dragon(n):
+        if instr == 'F':
+            turtle.forward(FWD)
+            k += 1
+            if steps is not None and k >= steps:
+                break
+        elif instr == 'R':
+            turtle.right(90)
+        elif instr == 'L':
+            turtle.left(90)
+        else:
+            pass
+    return tuple(p // FWD for p in turtle.position())
 
 def test():
     assert 'FaRbFRRLFaLbFR' == ''.join(heighway_dragon(2))
-    assert (18,16) == draw_dragon(10, 500)
+    assert (18,16) == cool_draw_dragon(10, 500)
 
 def run():
     print( draw_dragon(50, 10**12) )
