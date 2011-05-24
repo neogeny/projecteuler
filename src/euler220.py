@@ -79,11 +79,10 @@ def cool_draw_dragon(n, steps = None):
 def test():
     assert 'FaRbFRRLFaLbFR' == ''.join(heighway_dragon(2))
     assert (18,16) == draw_dragon(10, 500)
-    print draw_dragon(50, 10**6)
 
 def run():
     print( draw_dragon(50, 10**12) )
 
 if __name__ == '__main__':
     test()
-    #run()
+    run()
