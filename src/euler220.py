@@ -13,20 +13,19 @@ http://creativecommons.org/licenses/by-sa/3.0/
 """
 
 def heighway_dragon(n):
-    def prod(c):
-        if c == 'a':
-            return 'aRbFR'
-        elif c == 'b':
-            return 'LFaLb'
-        else:
-            return c
+    prod = {'a':'aRbFR',
+            'b':'LFaLb',
+            'F':'F',
+            'R':'R',
+            'L':'L'
+            }
     assert n >= 0
     if n == 0:
         yield 'F'
         yield 'a'
     else:
         for x in heighway_dragon(n-1):
-            for c in prod(x):
+            for c in prod[x]:
                 yield c
 
 def draw_dragon(n, steps = None):
@@ -79,11 +78,12 @@ def cool_draw_dragon(n, steps = None):
 
 def test():
     assert 'FaRbFRRLFaLbFR' == ''.join(heighway_dragon(2))
-    assert (18,16) == cool_draw_dragon(10, 500)
+    assert (18,16) == draw_dragon(10, 500)
+    print draw_dragon(50, 10**6)
 
 def run():
     print( draw_dragon(50, 10**12) )
 
 if __name__ == '__main__':
     test()
-    run()
+    #run()
