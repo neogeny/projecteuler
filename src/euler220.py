@@ -29,25 +29,23 @@ def heighway_dragon(n):
                 yield c
 
 def draw_dragon(n, steps = None):
-    RIGHT = {(0,1):(1,0),(1,0):(0,-1),(0,-1):(-1,0),(-1,0):(0,1)}
-    LEFT = {(0,1):(-1,0),(-1,0):(0,-1),(0,-1):(1,0),(1,0):(0,1)}
-
-    x, y = 0,0
-    ox, oy = 0,1 # orientation
+    p = 0  # position
+    o = 1j # orientation
     k = 0
     for instr in heighway_dragon(n):
         if instr == 'F':
-            x,y = x+ox, y+oy
+            if not k%10**6: print p,o
+            p += o
             k += 1
             if steps is not None and k >= steps:
                 break
         elif instr == 'R':
-            ox,oy = RIGHT[(ox,oy)]
+            o *= -1j
         elif instr == 'L':
-            ox,oy = LEFT[(ox,oy)]
+            o *= 1j
         else:
             pass
-    return x, y
+    return p.real, p.imag
             
 def cool_draw_dragon(n, steps = None):
     import turtle
@@ -81,7 +79,7 @@ def test():
     assert (18,16) == draw_dragon(10, 500)
 
 def run():
-    print( draw_dragon(50, 10**12) )
+    print( draw_dragon(50, 10**7) )
 
 if __name__ == '__main__':
     test()
