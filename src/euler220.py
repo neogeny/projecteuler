@@ -23,12 +23,9 @@ __prod = {intern('a'):intern('aRbFR'),
 def heighway_dragon(n):
     assert n >= 0
     if n == 0:
-        yield 'F'
-        yield 'a'
+        return (c for c in 'aF')
     else:
-        for x in heighway_dragon(n-1):
-            for c in __prod[x]:
-                yield c
+        return (c for x in heighway_dragon(n-1) for c in __prod[x])
 
 def draw_dragon(n, steps = None):
     p = 0  # position
@@ -38,6 +35,7 @@ def draw_dragon(n, steps = None):
         if instr == 'F':
             p += o
             k += 1
+            if not k%10**5: print p,o
             if steps is not None and k >= steps:
                 break
         elif instr == 'R':
@@ -96,7 +94,7 @@ def test():
     assert (18,16) == draw_dragon(10, 500)
     assert draw_dragon(50, 500) == draw_dragon(10,500)
     #print fast_dragon(50)
-    assert (18,16) == fast_dragon(500)
+    #assert (18,16) == fast_dragon(500)
     assert False
 
 def run():
