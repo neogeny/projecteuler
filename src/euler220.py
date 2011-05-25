@@ -35,7 +35,7 @@ def draw_dragon(n, steps = None):
         if instr == 'F':
             p += o
             k += 1
-            if not k%10**5: print p,o
+            if not k%10**6: print p,o
             if steps is not None and k >= steps:
                 break
         elif instr == 'R':
