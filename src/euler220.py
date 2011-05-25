@@ -23,7 +23,7 @@ __prod = {intern('a'):intern('aRbFR'),
 def heighway_dragon(n):
     assert n >= 0
     if n == 0:
-        return (c for c in 'aF')
+        return (c for c in 'Fa')
     else:
         return (c for x in heighway_dragon(n-1) for c in __prod[x])
 
@@ -95,7 +95,6 @@ def test():
     assert draw_dragon(50, 500) == draw_dragon(10,500)
     #print fast_dragon(50)
     #assert (18,16) == fast_dragon(500)
-    assert False
 
 def run():
     print( draw_dragon(40, 10**7) )
