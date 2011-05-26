@@ -28,15 +28,19 @@ void draw_dragon(
             int n
 ) 
 {
-    for (;*count > 0 && *seq; seq++)
+    for (;*count > 0; seq++)
     {
-        if (*seq == 'F') 
+        if (*seq == 0) 
+        {
+            break;
+        }
+        else if (*seq == 'F') 
         {
             *pos += *dir;
             --*count;
-            if (*count % powi(10,6) == 0) 
-                printf("%lld %d %f %f\n", 
-                    *count, n, creal(*pos), cimag(*pos));
+            if (*count % powi(10,7) == 0) 
+                printf("%lld %d %d %d\n", 
+                    *count, n, (int)creal(*pos), (int)cimag(*pos));
         }
         else if (*seq == 'R')
         {
@@ -60,15 +64,16 @@ void draw_dragon(
     } 
 }
 
-void main()
+void print_dragon_pos(long long count, int n)
 {
     complex pos = 0;
     complex dir = I;
-    long long count = 500;
-    draw_dragon(&pos, &dir, "Fa", &count, 10);
+    draw_dragon(&pos, &dir, "Fa", &count, n);
     printf("%d %d\n", (int) creal(pos), (int) cimag(pos));
+}
 
-    count = powi(10,8);
-    draw_dragon(&pos, &dir, "Fa", &count, 50);
-    printf("%d %d\n", (int) creal(pos), (int) cimag(pos));
+void main()
+{
+    print_dragon_pos(500, 10);
+    print_dragon_pos(powi(10,8), 40);
 }
