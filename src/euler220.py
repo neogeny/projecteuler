@@ -11,6 +11,8 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 
 """
+from math  import pi
+from cmath import polar, phase
 from factorization import factor
 
 __prod = {intern('a'):intern('aRbFR'),
@@ -23,9 +25,18 @@ __prod = {intern('a'):intern('aRbFR'),
 def heighway_dragon(n):
     assert n >= 0
     if n == 0:
-        return (c for c in 'Fa')
+        yield 'F'
+        yield 'a'
     else:
-        return (c for x in heighway_dragon(n-1) for c in __prod[x])
+        for x in heighway_dragon(n-1):
+            if x == 'a':
+                for c in 'aRbFR':
+                    yield c
+            elif x == 'b':
+                for c in 'LFaLb':
+                    yield c
+            else:
+                yield x
 
 def draw_dragon(n, steps = None):
     p = 0  # position
@@ -35,7 +46,8 @@ def draw_dragon(n, steps = None):
         if instr == 'F':
             p += o
             k += 1
-            if not k%10**6: print p,o
+#            if not k%10**6: print p,o,polar(p)
+            if phase(p) == pi/2: print k,k%8,p,o,polar(p)
             if steps is not None and k >= steps:
                 break
         elif instr == 'R':
@@ -90,6 +102,7 @@ def fast_dragon(turns):
     return int(p.real), int(p.imag)
             
 def test():
+    print ''.join(heighway_dragon(2))
     assert 'FaRbFRRLFaLbFR' == ''.join(heighway_dragon(2))
     assert (18,16) == draw_dragon(10, 500)
     assert draw_dragon(50, 500) == draw_dragon(10,500)
