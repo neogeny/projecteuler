@@ -20,45 +20,48 @@ long long powi(long x, unsigned n)
     return(r);
 }
 
-void draw_dragon(
-            complex *pos, 
-            complex *dir, 
-            char *seq, 
-            long long *count, 
-            int n
-) 
+complex _pos; 
+complex _dir; 
+long long _count; 
+long long _itersize;
+
+void draw_dragon(char *seq, int n) 
 {
-    for (;*count > 0; seq++)
+    for (;_count > 0; seq++)
     {
-        if (*seq == 0) 
+        char c = *seq;
+        if (c == 0) 
         {
             break;
         }
-        else if (*seq == 'F') 
+        else if (c == 'F') 
         {
-            *pos += *dir;
-            --*count;
-            if (*count % powi(10,7) == 0) 
+            _pos += _dir;
+            --_count;
+            if (_count % _itersize  == 0) 
+            {
                 printf("%lld %d %d %d\n", 
-                    *count, n, (int)creal(*pos), (int)cimag(*pos));
+                    count / _itersize, n, 
+                    (int)creal(_pos), (int)cimag(_pos));
+            }
         }
-        else if (*seq == 'R')
+        else if (c == 'R')
         {
-            *dir *= -I; 
+            _dir *= -I; 
         }
-        else if (*seq == 'L')
+        else if (c == 'L')
         {
-            *dir *= I; 
+            _dir *= I; 
         }
         else if (n > 0)
         {
-            if (*seq == 'a')
+            if (c == 'a')
             {
-                draw_dragon(pos, dir, "aRbFR", count, n-1);
+                draw_dragon("aRbFR", n-1);
             }
-            else if (*seq == 'b')
+            else if (c == 'b')
             {
-                draw_dragon(pos, dir, "LFaLb", count, n-1);
+                draw_dragon("LFaLb", n-1);
             }
         }
     } 
@@ -66,14 +69,16 @@ void draw_dragon(
 
 void print_dragon_pos(long long count, int n)
 {
-    complex pos = 0;
-    complex dir = I;
-    draw_dragon(&pos, &dir, "Fa", &count, n);
-    printf("%d %d\n", (int) creal(pos), (int) cimag(pos));
+    _pos = 0;
+    _dir = I;
+    _count = count;
+    _itersize = powi(10,8);
+    draw_dragon("Fa",n);
+    printf("%d %d\n", (int) creal(_pos), (int) cimag(_pos));
 }
 
 void main()
 {
     print_dragon_pos(500, 10);
-    print_dragon_pos(powi(10,8), 40);
+    print_dragon_pos(powi(10,12), 40);
 }
