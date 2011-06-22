@@ -21,7 +21,7 @@ d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
 """
 from itertools import count
-from functools import reduce
+from functools import reduce as rdc
 from operator import mul
 
 def counting_digits():
@@ -44,7 +44,7 @@ def test():
 
 def run():
     sel = [10 ** i for i in xrange(6 + 1)]
-    print reduce(mul, (c for c in select_digits(sel)), 1)
+    print rdc(mul, (c for c in select_digits(sel)), 1)
 
 if __name__ == '__main__':
     test()
