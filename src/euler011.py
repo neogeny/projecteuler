@@ -44,11 +44,11 @@ What is the greatest product of four adjacent numbers in any direction (up, down
 GRID = [line.split() for line in SGRID.split('\n')[1:-1]]
 GRID = [[int(s) for s in line] for line in GRID]
 
-from functools import reduce
+from functools import reduce as rdc
+from operator import mul
 
 def prod(a):
-    def mul(x, y): return x * y
-    return reduce(mul, a, 1)
+    return rdc(mul, a, 1)
 
 def row(g, i, j, n):
     return g[i][j:j + n]

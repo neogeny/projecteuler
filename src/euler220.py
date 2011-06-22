@@ -47,7 +47,7 @@ def draw_dragon(n, steps = None):
             p += o
             k += 1
 #            if not k%10**6: print p,o,polar(p)
-            if phase(p) == pi/2: print k,k%8,p,o,polar(p)
+#            if phase(p) == pi/2: print k,k%8,p,o,polar(p)
             if steps is not None and k >= steps:
                 break
         elif instr == 'R':
@@ -90,9 +90,8 @@ def fast_dragon(turns):
     p = 0  # position
     o = 1j
     i = 0
-    for n in xrange(turns):
+    for _ in xrange(turns):
         p += o
-        print p
         turn_right = not g[i][0] and g[i][1]
         i = (i+1) % len(g)
         if turn_right:
@@ -102,12 +101,9 @@ def fast_dragon(turns):
     return int(p.real), int(p.imag)
             
 def test():
-    print ''.join(heighway_dragon(2))
     assert 'FaRbFRRLFaLbFR' == ''.join(heighway_dragon(2))
     assert (18,16) == draw_dragon(10, 500)
     assert draw_dragon(50, 500) == draw_dragon(10,500)
-    #print fast_dragon(50)
-    #assert (18,16) == fast_dragon(500)
 
 def run():
     print( draw_dragon(40, 10**7) )
