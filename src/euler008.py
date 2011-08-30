@@ -34,7 +34,7 @@ STARGET = """
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
 """
-from functools import reduce
+from functools import reduce as rdc
 
 STARGET = ''.join(STARGET.strip().split())
 
@@ -42,7 +42,7 @@ TARGET = [int(c) for c in STARGET]
 
 def largest_product_of(n, m):
     mul = lambda x, y: x * y
-    prod_n_at = lambda k : reduce(mul, m[k:k + n], 1)
+    prod_n_at = lambda k : rdc(mul, m[k:k + n], 1)
     return max(prod_n_at(i) for i in xrange(len(m) - n))
 
 def test():

@@ -25,6 +25,46 @@ complex _dir;
 long long _count; 
 long long _itersize;
 
+void draw_dragon_a(int n);
+void draw_dragon_b(int n);
+
+
+void draw_dragon_a(int n)
+{
+    if (n <= 0 || _count <=0)
+        return;
+    draw_dragon_a(n-1);
+    _dir *= -I;
+    draw_dragon_b(n-1);
+    _pos += _dir;
+    --_count;
+    _dir *= -I;
+    if (_count % _itersize  == 0) 
+    {
+        printf("%lld %d %d %d\n", 
+                _count / _itersize, n, 
+                (int)creal(_pos), (int)cimag(_pos));
+    }
+}
+
+void draw_dragon_b(int n)
+{
+    if (n <= 0 || _count <=0)
+        return;
+    _dir *= I;
+    _pos += _dir;
+    --_count;
+    draw_dragon_a(n-1);
+    _dir *= I;
+    draw_dragon_b(n-1);
+    if (_count % _itersize  == 0) 
+    {
+        printf("%lld %d %d %d\n", 
+                _count / _itersize, n, 
+                (int)creal(_pos), (int)cimag(_pos));
+    }
+}
+
 void draw_dragon(char *seq, int n) 
 {
     for (;_count > 0; seq++)
@@ -41,7 +81,7 @@ void draw_dragon(char *seq, int n)
             if (_count % _itersize  == 0) 
             {
                 printf("%lld %d %d %d\n", 
-                    count / _itersize, n, 
+                    _count / _itersize, n, 
                     (int)creal(_pos), (int)cimag(_pos));
             }
         }
@@ -57,11 +97,11 @@ void draw_dragon(char *seq, int n)
         {
             if (c == 'a')
             {
-                draw_dragon("aRbFR", n-1);
+                draw_dragon_a(n-1);
             }
             else if (c == 'b')
             {
-                draw_dragon("LFaLb", n-1);
+                draw_dragon_b(n-1);
             }
         }
     } 
