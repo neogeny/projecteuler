@@ -1,0 +1,5 @@
+.*\.py[co]$
+.*\.so$
+.*\.old$
+^src/build$
+/a.out$
