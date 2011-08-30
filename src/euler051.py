@@ -36,27 +36,27 @@ def largest_family(limit, largest):
         l2 = len(pdigs)
         if l2 < limit:
             continue
-        if l2 > limit:
-            break
+#        if l2 > limit:
+#            break
         if l2 != current_len:
             current_len = l2
             different = (False,)*current_len
             seen = OrderedDict()
         for k in seen.iterkeys():
-            s = disimillarity(k, p)
-            if s == different:
+            dis = disimillarity(k, p)
+            if dis == different:
                 continue
             # the replacement number must be the same
-            changed = tuple(compress(pdigs, s))
-            if not all_same(changed):
+            changed = tuple(compress(pdigs, dis))
+            if len(changed) > 1 and not all_same(changed):
                 continue
-#            print changed, pdigs, s
-            family = seen[k].get(s, [k])
+#            print changed, pdigs, dis
+            family = seen[k].get(dis, [k])
             family.append(p)
             if len(family) > len(best_family):
                 best_family = family
-                print s, family
-            seen[k][s] = family
+                print dis, family
+            seen[k][dis] = family
         seen[p] = {different:[p]}
         if len(best_family) >= largest:
             break
@@ -65,11 +65,10 @@ def largest_family(limit, largest):
 def test():
     assert (False,False,True,True,False) == disimillarity(56443,56003)
     assert [13, 23, 43, 53, 73, 83] == largest_family(2, 6)
-    print 'search'
-    print largest_family(5, 7)
+    assert [40343, 41113, 42223, 45553, 46663, 48883, 49993] == largest_family(5, 7)
 
 def run():
-    pass
+    print largest_family(6, 8)
 
 if __name__ == '__main__':
     test()
