@@ -30,7 +30,7 @@ def spiral_diagonal_sum(m):
     diag_sum = 1
     for r in range(1, 1 + m // 2):
         diff = 2 * r
-        for _i in range(4):
+        for _ in range(4):
             diag_no += diff
             diag_sum += diag_no
     return diag_sum

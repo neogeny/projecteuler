@@ -30,7 +30,7 @@ def digits_upto(k, i=0):
     return seq2str(str(c) for c in xrange(i, min(9, k) + 1))
 
 def digits_downfrom(k, i=0):
-    return digits_upto(k, 1)[::-1]
+    return digits_upto(k, i)[::-1]
 
 def sorted_digits(n):
     return seq2str(sorted(str(n)))

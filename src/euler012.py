@@ -29,7 +29,7 @@ We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
 """
-from functools import reduce
+from functools import reduce as rdc
 from itertools import combinations, count
 from factorization import factors
 from series import factorial
@@ -45,7 +45,7 @@ def triangles(n):
         n -= 1
 
 def first_triangle_with_divisors(n):
-    def prod(q): return reduce(operator.mul, q, 1)
+    def prod(q): return rdc(operator.mul, q, 1)
     for t in triangles(factorial(n)):
         f = factors(t)
         reps = [k[1] for k in f]

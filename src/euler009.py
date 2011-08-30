@@ -23,7 +23,7 @@ Find the product abc.
 # a + b + c = 1000
 
 from math import sqrt
-from functools import reduce
+from functools import reduce as rdc
 
 def pythagorean_triplet_that_sums(s):
     def solve_b(a):
@@ -44,7 +44,7 @@ def pythagorean_triplet_that_sums(s):
             return (a , b , c)
 
 def prod(q):
-    return reduce(lambda x, y:x * y, q, 1)
+    return rdc(lambda x, y:x * y, q, 1)
 
 def test():
     assert 3 * 4 * 5 == prod(pythagorean_triplet_that_sums(3 + 4 + 5))
