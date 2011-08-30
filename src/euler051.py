@@ -19,53 +19,69 @@ Find the smallest prime which, by replacing part of the number (not necessarily 
 from collections import OrderedDict
 from itertools import compress
 from digits import digits
-from primality import all_primes
+from primality import all_primes, is_prime
 
 def disimillarity(n, m):
     pairs = zip(digits(n), digits(m))
     return tuple(a != b for a, b in pairs)
 
-def all_same(l):
-    return 1 == len(set(l))
+def digits2num(digits):
+    num = 0
+    for d in digits:
+        num = num*10 + d
+    return num 
+
+def exchanged_primes(dig, pattern, start):
+    for i in xrange(start, 9+1):
+        n = digits2num(i if p else d for p, d in zip(pattern, dig))
+        if len(str(n)) == len(pattern) and is_prime(n):
+            yield n
+        
 
 def largest_family(limit, largest):
-    best_family = []
+    best_family = set()
     current_len = 0
     for p in all_primes():
         pdigs = list(digits(p))
-        l2 = len(pdigs)
-        if l2 < limit:
+        newlen = len(pdigs)
+        if newlen < limit:
             continue
-#        if l2 > limit:
+#        if newlen > limit:
 #            break
-        if l2 != current_len:
-            current_len = l2
+        if newlen != current_len:
+            current_len = newlen
             different = (False,)*current_len
-            seen = OrderedDict()
-        for k in seen.iterkeys():
+            families = OrderedDict()
+            known = set()
+        for k in families.iterkeys():
             dis = disimillarity(k, p)
-            if dis == different:
+            if dis == different or (p,dis) in known:
                 continue
-            # the replacement number must be the same
             changed = tuple(compress(pdigs, dis))
-            if len(changed) > 1 and not all_same(changed):
+            kchanged = tuple(compress(digits(k), dis))
+            if len(set(changed)) != 1 or len(set(kchanged)) != 1:
                 continue
-#            print changed, pdigs, dis
-            family = seen[k].get(dis, [k])
-            family.append(p)
+            family = families[k].get(dis, set([k]))
+            for c in exchanged_primes(pdigs, dis, list(changed)[0]):
+                family.add(c)
+                known.add((c,dis))
             if len(family) > len(best_family):
                 best_family = family
                 print dis, family
-            seen[k][dis] = family
-        seen[p] = {different:[p]}
+            families[k][dis] = family
+        families[p] = {different:set((p,))}
         if len(best_family) >= largest:
             break
-    return best_family
+    return list(sorted(best_family))
 
 def test():
     assert (False,False,True,True,False) == disimillarity(56443,56003)
+    print largest_family(2, 6)
     assert [13, 23, 43, 53, 73, 83] == largest_family(2, 6)
-    assert [40343, 41113, 42223, 45553, 46663, 48883, 49993] == largest_family(5, 7)
+    l57 = largest_family(5, 7)
+    print l57
+    assert [56003, 56113, 56333, 56443, 56663, 56773, 56993] == l57
+    print 'tested'
 
 def run():
     print largest_family(6, 8)
