@@ -16,7 +16,7 @@ By replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit n
 Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family.
 """
 
-from collections import OrderedDict, defaultdict
+from collections import defaultdict
 from itertools import compress
 from digits import digits
 from memoization import memoize
@@ -59,7 +59,6 @@ def longest_family_sized(target_len, ndigits = None):
         for pat in patterns_from(p):
             family = families[pat]
             family.append(p)
-#            print pat, family
             if len(family) > len(longest_family):
                 longest_family = family
             families[pat] = family
@@ -69,9 +68,9 @@ def longest_family_sized(target_len, ndigits = None):
 
 def test():
     l6 = longest_family_sized(6,2)
-    assert [13, 23, 43, 53, 73, 83] == l6
+    assert l6 == [13, 23, 43, 53, 73, 83]
     l7 = longest_family_sized(7)
-    assert [56003, 56113, 56333, 56443, 56663, 56773, 56993] == l7
+    assert l7 == [56003, 56113, 56333, 56443, 56663, 56773, 56993]
 
 def run():
     print longest_family_sized(8)
