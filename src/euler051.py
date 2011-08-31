@@ -16,75 +16,65 @@ By replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit n
 Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family.
 """
 
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 from itertools import compress
 from digits import digits
-from primality import all_primes, is_prime
+from memoization import memoize
+from primality import all_primes
 
-def disimillarity(n, m):
-    pairs = zip(digits(n), digits(m))
-    return tuple(a != b for a, b in pairs)
+def ibit_patterns_sized(n):
+    for i in xrange(1, 2**n-1):
+        yield ('0'*n + bin(i)[2:])[-n:]
 
-def digits2num(digits):
-    num = 0
-    for d in digits:
-        num = num*10 + d
-    return num 
+@memoize
+def bit_patterns_sized(n):
+    return tuple(ibit_patterns_sized(n))
 
-def exchanged_primes(dig, pattern, start):
-    for i in xrange(start, 9+1):
-        n = digits2num(i if p else d for p, d in zip(pattern, dig))
-        if len(str(n)) == len(pattern) and is_prime(n):
-            yield n
-        
+@memoize
+def bool_patterns_sized(n):
+    def bit2bool(pat):
+        return tuple(i == '1' for i in pat)
+    return tuple(bit2bool(pat) for pat in ibit_patterns_sized(n))
 
-def largest_family(limit, largest):
-    best_family = set()
-    current_len = 0
+def pattern_applies(pat, d):
+    return 1 == len(set(compress(d,pat)))
+
+def pattern_filter(pat, d):
+    return tuple(None if p else d for p,d in zip(pat, d)) 
+
+def patterns_from(n):
+    d = tuple(digits(n))
+    for pat in bool_patterns_sized(len(d)):
+        if pattern_applies(pat, d):
+            yield pattern_filter(pat, d)
+
+def longest_family_sized(target_len, ndigits = None):
+    longest_family = []
+    families = defaultdict(list)
     for p in all_primes():
-        pdigs = list(digits(p))
-        newlen = len(pdigs)
-        if newlen < limit:
+        if ndigits and len(str(p)) < ndigits:
             continue
-#        if newlen > limit:
-#            break
-        if newlen != current_len:
-            current_len = newlen
-            different = (False,)*current_len
-            families = OrderedDict()
-            known = set()
-        for k in families.iterkeys():
-            dis = disimillarity(k, p)
-            if dis == different or (p,dis) in known:
-                continue
-            changed = tuple(compress(pdigs, dis))
-            kchanged = tuple(compress(digits(k), dis))
-            if len(set(changed)) != 1 or len(set(kchanged)) != 1:
-                continue
-            family = families[k].get(dis, set([k]))
-            for c in exchanged_primes(pdigs, dis, list(changed)[0]):
-                family.add(c)
-                known.add((c,dis))
-            if len(family) > len(best_family):
-                best_family = family
-                print dis, family
-            families[k][dis] = family
-        families[p] = {different:set((p,))}
-        if len(best_family) >= largest:
+        if ndigits and len(str(p)) > ndigits:
             break
-    return list(sorted(best_family))
+        for pat in patterns_from(p):
+            family = families[pat]
+            family.append(p)
+#            print pat, family
+            if len(family) > len(longest_family):
+                longest_family = family
+            families[pat] = family
+        if len(longest_family) >= target_len:
+            break
+    return longest_family
 
 def test():
-    assert (False,False,True,True,False) == disimillarity(56443,56003)
-    print largest_family(2, 6)
-    assert [13, 23, 43, 53, 73, 83] == largest_family(2, 6)
-    l57 = largest_family(5, 7)
-    print l57
-    assert [56003, 56113, 56333, 56443, 56663, 56773, 56993] == l57
-    print 'tested'
+    l6 = longest_family_sized(6,2)
+    assert [13, 23, 43, 53, 73, 83] == l6
+    l7 = longest_family_sized(7)
+    assert [56003, 56113, 56333, 56443, 56663, 56773, 56993] == l7
 
 def run():
-    print largest_family(6, 8)
+    print longest_family_sized(8)
 
 if __name__ == '__main__':
     test()
