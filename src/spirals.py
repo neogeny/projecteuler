@@ -16,10 +16,10 @@ from itertools import count
 def spiral_diagonal_numbers():
     yield 1,1,0
     number = 1
-    for side in count(1):
-        diff = 2 * side
+    for r in count(1):
+        side = 2 * r
         for diag_no in xrange(4):
-            number += diff
+            number += side
             yield number, side+1, diag_no
 
 def test():
