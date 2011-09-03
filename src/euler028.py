@@ -24,18 +24,20 @@ It can be verified that the sum of the numbers on the diagonals is 101.
 What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed 
 in the same way?
 """
+from spirals import spiral_diagonal_numbers
+
+def spiral_diagonal_numbers_upto_side(m):
+    numbers = spiral_diagonal_numbers()
+    for _ in xrange(1 + 4*(m-1)//2):
+        n,_,_  = numbers.next()
+        yield n
 
 def spiral_diagonal_sum(m):
-    diag_no = 1
-    diag_sum = 1
-    for r in range(1, 1 + m // 2):
-        diff = 2 * r
-        for _ in range(4):
-            diag_no += diff
-            diag_sum += diag_no
-    return diag_sum
+    return sum(spiral_diagonal_numbers_upto_side(m))
 
 def test():
+    diagsin5 = [1, 3, 5, 7, 9, 13, 17, 21, 25] 
+    assert diagsin5 == list(spiral_diagonal_numbers_upto_side(5))
     assert 101 == spiral_diagonal_sum(5)
 
 if __name__ == '__main__':
