@@ -36,14 +36,14 @@ def nth_prime(n):
     if n <= len(__primes):
         return __primes[n - 1]
 
-    k = __primes[-1]
-    limit = 1 + bisect(__primes, int(sqrt(k)))
+    i = __primes[-1]
+    limit = 1 + bisect(__primes, int(sqrt(i)))
     while len(__primes) < n:
-        k += 2
-        while __primes[limit] ** 2 < k:
+        i += 2
+        while __primes[limit] ** 2 < i:
             limit += 1
-        if all(k % p for p in __primes[1:limit]):
-            __primes.append(k)
+        if all(i % p for p in __primes[1:limit]):
+            __primes.append(i)
     return __primes[-1]
 
 def known_prime(n):
@@ -72,30 +72,47 @@ def primes_upto(m):
         else:
             break
 
-def sieve_upto(m):
-    sieve = (m + 1) * [True]
-    p = 1
+def sieve_upto(n):
+    m = (n-1) // 2
+    b = [True]*m
+
+    def discard_multiples(p):
+        i = p // 2
+        start = 2*i*i + 6*i + 3
+        for j in xrange(start, 2*i+3):
+            b[j] = False
+
     for p in __primes:
-        if p <= m:
+        if p > n:
+           return
+        yield p
+        discard_multiples(p)
+
+    p = __primes[-1] + 2
+    while p*p < n:
+        print p
+        i = p // 2
+        if b[i]:
+            __primes.append(p)
             yield p
-            for j in xrange(p*p, m, p):
-                sieve[j] = False
-        else:
-            break
-    for p in xrange(p+2, m, 2):
-        if sieve[p]:
-            if p > __primes[-1]:
-                __primes.append(p)
+            discard_multiples(p)
+        p += 2
+    for i in xrange(i, m):
+        if b[i]:
+            __primes.append(p)
             yield p
-            for j in xrange(p*p, m, p):
-                sieve[j] = False
+        p += 2
 
 def test(pr):
-    N = 10 ** 6
+    N = 10 ** 7
     s = 0
     for p in pr(N):
         s += 1
-        assert p <= N
+        assert p <= N, '%d %d' % (p, N)
+        assert is_prime(p)
+    for p in pr(N):
+        s += 1
+        assert p <= N, '%d %d' % (p, N)
         assert is_prime(p)
     print s, p
 
