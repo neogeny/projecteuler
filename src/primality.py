@@ -36,9 +36,9 @@ def nth_prime(n):
     if n <= len(__primes):
         return __primes[n - 1]
 
-    n -= len(__primes)
     k = __primes[-1]
     limit = 1 + bisect(__primes, int(sqrt(k)))
+    n -= len(__primes)
     while n > 0:
         k += 2
         while __primes[limit] ** 2 < k:
@@ -87,7 +87,7 @@ def sieve_upto(m):
                 sieve[j * p] += 1
 
 def test(pr):
-    N = 10 ** 4
+    N = 10 ** 6
     s = 0
     for _p in pr(N):
         s += 1
@@ -96,6 +96,9 @@ def test(pr):
 
 if __name__ == '__main__':
     from timeit import timeit
-#    print timeit('test(primes_upto)', 'from primality import *', number=2)
-    print timeit('test(sieve_upto)', 'from primality import *', number=2)
-    print timeit('test(sieve_upto)', 'from primality import *', number=2)
+    print timeit('test(primes_upto)', 
+                    'from primality import test, primes_upto', 
+                    number=4)
+    print timeit('test(sieve_upto)', 
+                    'from primality import test, sieve_upto', 
+                    number=4)
