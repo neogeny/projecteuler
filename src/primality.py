@@ -38,14 +38,12 @@ def nth_prime(n):
 
     k = __primes[-1]
     limit = 1 + bisect(__primes, int(sqrt(k)))
-    n -= len(__primes)
-    while n > 0:
+    while len(__primes) < n:
         k += 2
         while __primes[limit] ** 2 < k:
             limit += 1
         if all(k % p for p in __primes[1:limit]):
             __primes.append(k)
-            n -= 1
     return __primes[-1]
 
 def known_prime(n):
@@ -58,12 +56,10 @@ def is_prime(n):
     n = abs(n)
     if n < 2:
         return False
-    elif known_prime(n):
-        return True
-    elif n < __primes[-1]:
-        return False
+    elif n <= __primes[-1]:
+        return known_prime(n)
     else:
-        return all(n % p for p in primes_upto(sqrt(n)))
+        return all(n % p for p in sieve_upto(sqrt(n)))
 
 def all_primes():
     for n in count(1):
@@ -77,22 +73,31 @@ def primes_upto(m):
             break
 
 def sieve_upto(m):
-    sieve = (m + 1) * [0]
-    for p in xrange(2, m + 1):
-        if not sieve[p]:
+    sieve = (m + 1) * [True]
+    p = 1
+    for p in __primes:
+        if p <= m:
+            yield p
+            for j in xrange(p*p, m, p):
+                sieve[j] = False
+        else:
+            break
+    for p in xrange(p+2, m, 2):
+        if sieve[p]:
             if p > __primes[-1]:
                 __primes.append(p)
             yield p
-            for j in xrange(m // p + 1):
-                sieve[j * p] += 1
+            for j in xrange(p*p, m, p):
+                sieve[j] = False
 
 def test(pr):
     N = 10 ** 6
     s = 0
-    for _p in pr(N):
+    for p in pr(N):
         s += 1
-#        assert is_prime(p)
-    print s
+        assert p <= N
+        assert is_prime(p)
+    print s, p
 
 if __name__ == '__main__':
     from timeit import timeit
