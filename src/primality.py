@@ -11,6 +11,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Prime numbers.
 """
+import sys
 from math import sqrt
 from bisect import bisect_left as bisect
 from itertools import count
@@ -40,7 +41,7 @@ def nth_prime(n):
     limit = 1 + bisect(__primes, int(sqrt(i)))
     while len(__primes) < n:
         i += 2
-        while __primes[limit] ** 2 < i:
+        while __primes[limit] ** 2 <= i:
             limit += 1
         if all(i % p for p in __primes[1:limit]):
             __primes.append(i)
@@ -56,10 +57,10 @@ def is_prime(n):
     n = abs(n)
     if n < 2:
         return False
-    elif n <= __primes[-1]:
-        return known_prime(n)
+    elif known_prime(n):
+        return True
     else:
-        return all(n % p for p in sieve_upto(sqrt(n)))
+        return all(n % p for p in primes_upto(int(sqrt(n))))
 
 def all_primes():
     for n in count(1):
@@ -67,22 +68,26 @@ def all_primes():
 
 def primes_upto(m):
     for p in all_primes():
-        if p <= m:
+        if p < m:
             yield p
         else:
             break
 
 def sieve_upto(n):
+    if n < 2:
+       return
+
     m = (n-1) // 2
     b = [True]*m
 
     def discard_multiples(p):
         i = p // 2
         start = 2*i*i + 6*i + 3
-        for j in xrange(start, 2*i+3):
+        for j in xrange(start, m, 2*i+3):
             b[j] = False
 
-    for p in __primes:
+    yield 2
+    for p in __primes[1:]:
         if p > n:
            return
         yield p
@@ -90,36 +95,75 @@ def sieve_upto(n):
 
     p = __primes[-1] + 2
     while p*p < n:
-        print p
         i = p // 2
         if b[i]:
             __primes.append(p)
             yield p
             discard_multiples(p)
         p += 2
+    i = p // 2
     for i in xrange(i, m):
         if b[i]:
             __primes.append(p)
             yield p
         p += 2
+    print >>sys.stderr, 'array len', len(b)
+
+def set_sieve_upto(n):
+    if n < 2:
+       return
+
+    b = set()
+    def discard_multiples(p):
+        for j in xrange(p*p, n, p):
+            if p in b:
+                break
+            b.add(p)
+
+    yield 2
+    for p in __primes[1:]:
+        if p > n:
+           return
+        yield p
+        discard_multiples(p)
+
+    p = __primes[-1] + 2
+    while p*p < n:
+        if p not in b:
+            __primes.append(p)
+            yield p
+            discard_multiples(p)
+        p += 2
+    for p in xrange(p, n, 2):
+        if p not in b:
+            __primes.append(p)
+            yield p
+    print 'set len', len(b)
 
 def test(pr):
-    N = 10 ** 7
+    N = 10**7
     s = 0
     for p in pr(N):
         s += 1
         assert p <= N, '%d %d' % (p, N)
         assert is_prime(p)
+    s=0
     for p in pr(N):
         s += 1
         assert p <= N, '%d %d' % (p, N)
         assert is_prime(p)
-    print s, p
+    print N, s, p
 
 if __name__ == '__main__':
+#    test(sieve_upto)
+#    test(set_sieve_upto)
+
     from timeit import timeit
     print timeit('test(primes_upto)', 
                     'from primality import test, primes_upto', 
+                    number=4)
+    print timeit('test(set_sieve_upto)', 
+                    'from primality import test, set_sieve_upto', 
                     number=4)
     print timeit('test(sieve_upto)', 
                     'from primality import test, sieve_upto', 
