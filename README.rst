@@ -24,8 +24,10 @@ Because at times I broke existing shared code while solving new problems, I deci
 
 Finally, it makes little sense to look at the code unless you've already solved the problems, you're only interested in the reusable parts, or you want to review what I have written for other reasons.
 
-To execute the solutions just issue::
+To run the tests just issue::
 
     python tests.py
 
-at the commandline. The programs won't work with optimizations (``-O``) enabled because of the reliance on Python_ assertions.
+at the commandline. The tests won't work with optimizations (``-O``) enabled because of the reliance on Python_ assertions.
+
+Tu solve the problems, run each ``src/eulerXXX.py`` program individually.
