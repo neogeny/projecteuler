@@ -6,7 +6,7 @@ Solutions to Project Euler Problems
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Factorization.
@@ -14,6 +14,7 @@ Factorization.
 from math import sqrt
 from itertools import combinations
 from primality import primes_upto, known_prime
+
 
 def factor(n, m):
     k = 0
@@ -25,26 +26,33 @@ def factor(n, m):
         k += 1
     return (n, m, k)
 
+
 def factors(n):
     while n > 1:
         if known_prime(n):
             yield (n, 1)
             break
-        for m in primes_upto(sqrt(n)):
-            residue, _m, times = factor(n, m)
+
+        for m in primes_upto(n):
+            if m > n:
+                break
+            divisor, _, times = factor(n, m)
             if times:
                 yield m, times
-                n = residue
+                n = divisor
                 break
         else:
             yield (n, 1)
             break
 
+
 def first_factor(n):
     return factors(n).next()[0]
 
+
 def is_prime(n):
     return n == first_factor(n)
+
 
 def factor_count(n, upto=None):
     s = 0
@@ -53,6 +61,7 @@ def factor_count(n, upto=None):
         if upto and s > upto:
             break
     return s
+
 
 def mcm(numbers):
     max_factor = {}
@@ -64,6 +73,7 @@ def mcm(numbers):
         result *= f ** k
     return result
 
+
 def multiples(factor_list):
     if not factor_list:
         yield 1
@@ -72,6 +82,7 @@ def multiples(factor_list):
         for j in multiples(factor_list[1:]):
             for i in xrange(1, k + 1):
                 yield n ** i * j
+
 
 def divisors(t):
     f = list(factors(t))
