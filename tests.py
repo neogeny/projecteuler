@@ -17,7 +17,7 @@ import os
 from timeit import timeit
 sys.path.insert(0, 'src')
 
-../
+
 def test_assertions_on():
     try:
         assert False
