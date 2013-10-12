@@ -17,10 +17,10 @@ Modesty set aside, I think that the result of my effort is a library that can be
 
 So far I've approached the problems this way:
 
-# In order.
-# Always take a look at the latest published problem, but leave it for later if it seems too hard. The reason for this is provided in the hints at `Project Euler`_: new problems tend to build upon knowledge gained with previous problems (and, in my case, previous code).
-# If I get bored, I browse for a problem I that I want to solve or that I find easy to solve and have a take at it.
-# I always devise a strategy in my head before coming back to the computer. When I sit at the keyboard, I already know what I'm going to write, except, perhaps, for the workings of a library I haven't used lately.
+#. In order.
+#. Always take a look at the latest published problem, but leave it for later if it seems too hard. The reason for this is provided in the hints at `Project Euler`_: new problems tend to build upon knowledge gained with previous problems (and, in my case, previous code).
+#. If I get bored, I browse for a problem I that I want to solve or that I find easy to solve and have a take at it.
+#. I always devise a strategy in my head before coming back to the computer. When I sit at the keyboard, I already know what I'm going to write, except, perhaps, for the workings of a library I haven't used lately.
 
 Since I've already broken shared code while solving new problems, I decided to incorporate either assertions or unit tests (some form of automation) to verify that all problems are solved correctly before publishing changes.
 
