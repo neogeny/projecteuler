@@ -6,16 +6,18 @@ Solutions to Project Euler Problems
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 
 """
 import sys
 from glob import glob
-from os import path
+import os
 from timeit import timeit
+sys.path.insert(0, 'src')
 
+../
 def test_assertions_on():
     try:
         assert False
@@ -30,8 +32,9 @@ if __name__ == '__main__':
     total = 0
     count = 0
     failed = 0
-    for filename in sorted(glob('euler*.py')):
-        name, _ = path.splitext(filename)
+    for filename in sorted(glob('src/euler*.py')):
+        filename = os.path.basename(filename)
+        name, _ = os.path.splitext(filename)
         try:
             t = timeit('test()', 'from ' + name + ' import test', number=1)
             total += t

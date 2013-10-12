@@ -6,7 +6,7 @@ Solution to Project Euler Problem 59
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Each character on a computer is assigned a unique code and the preferred standard is ASCII (American Standard Code for Information Interchange). For example, uppercase A = 65, asterisk (*) = 42, and lowercase k = 107.
@@ -23,7 +23,7 @@ import csv
 from itertools import izip, cycle, product
 from string import ascii_lowercase, ascii_uppercase
 
-FILENAME ='../data/cipher1.txt' 
+FILENAME ='data/cipher1.txt'
 CIPHER = [int(c) for c in csv.reader(open(FILENAME, 'r')).next()]
 
 ALOWER = set(ascii_lowercase)

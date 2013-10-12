@@ -6,7 +6,7 @@ Solution to Project Euler Problem 81
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 In the 5 by 5 matrix below, the minimal path sum from the top left to the bottom right, by only moving to the right and down, is indicated in bold red and is equal to 2427.
@@ -23,9 +23,10 @@ Find the minimal path sum, in matrix.txt (right click and 'Save Link/Target As..
 from copy import deepcopy
 import csv
 
+
 def reduce_min_path(matrix, reducer=min):
     T = deepcopy(matrix)
-    ibot = len(T)-1
+    ibot = len(T) - 1
     # reduce the right column moving down
     for i in xrange(ibot-1, -1, -1):
         if len(T[i+1]) < len(T[i]):
@@ -41,7 +42,7 @@ def reduce_min_path(matrix, reducer=min):
             T[i][j] += reducer(T[i + 1][j], T[i][j + 1])
     return T[0][0]
 
-FILENAME ='../data/matrix.txt' 
+FILENAME ='data/matrix.txt'
 MATRIX = [[int(c) for c in line ] for line in csv.reader(open(FILENAME, 'r'))]
 
 TEST_DATA = [
@@ -52,8 +53,10 @@ TEST_DATA = [
 [805,732,524,37,331]
 ]
 
+
 def test():
     assert 2427 == reduce_min_path(TEST_DATA)
+
 
 def run():
     print reduce_min_path(MATRIX)
