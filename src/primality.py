@@ -17,17 +17,18 @@ from bisect import bisect_left as bisect
 from itertools import count
 
 __primes = [
-           2, 3, 5, 7,
-           11, 13, 17, 19,
-           23, 29,
-           31, 37,
-           41, 43, 47,
-           53, 59,
-           61, 67,
-           71, 73, 79,
-           83, 89,
-           97
-           ]
+    2, 3, 5, 7,
+    11, 13, 17, 19,
+    23, 29,
+    31, 37,
+    41, 43, 47,
+    53, 59,
+    61, 67,
+    71, 73, 79,
+    83, 89,
+    97
+]
+
 
 def nth_prime(n):
     global __primes
@@ -47,11 +48,13 @@ def nth_prime(n):
             __primes.append(i)
     return __primes[-1]
 
+
 def known_prime(n):
     if n <= __primes[-1]:
         i = bisect(__primes, n)
         return __primes[i] == n
     return False
+
 
 def is_prime(n):
     n = abs(n)
@@ -60,11 +63,13 @@ def is_prime(n):
     elif known_prime(n):
         return True
     else:
-        return all(n % p for p in primes_upto(int(sqrt(n))))
+        return all(n % p for p in primes_upto(n))
+
 
 def all_primes():
     for n in count(1):
         yield nth_prime(n)
+
 
 def primes_upto(m):
     for p in all_primes():
@@ -73,9 +78,10 @@ def primes_upto(m):
         else:
             break
 
+
 def sieve_upto(n):
     if n < 2:
-       return
+        return
 
     m = (n - 1) // 2
     b = [True] * m
@@ -89,7 +95,7 @@ def sieve_upto(n):
     yield 2
     for p in __primes[1:]:
         if p > n:
-           return
+            return
         yield p
         discard_multiples(p)
 
@@ -110,6 +116,7 @@ def sieve_upto(n):
     print >> sys.stderr, 'array len', len(b)
 
 __b = set()
+
 
 def set_sieve_upto(n):
     if n < 2:
@@ -140,6 +147,7 @@ def set_sieve_upto(n):
             __primes.append(p)
             yield p
     print 'set len', len(__b)
+
 
 def test(pr):
     N = 10 ** 7
@@ -172,8 +180,3 @@ if __name__ == '__main__':
     print timeit('test(sieve_upto)',
                     'from primality import test, sieve_upto',
                     number=4)
-
-
-
-
-
