@@ -6,7 +6,7 @@ Solution to Project Euler Problem
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Prime numbers.
@@ -77,13 +77,13 @@ def sieve_upto(n):
     if n < 2:
        return
 
-    m = (n-1) // 2
-    b = [True]*m
+    m = (n - 1) // 2
+    b = [True] * m
 
     def discard_multiples(p):
         i = p // 2
-        start = 2*i*i + 6*i + 3
-        for j in xrange(start, m, 2*i+3):
+        start = 2 * i * i + 6 * i + 3
+        for j in xrange(start, m, 2 * i + 3):
             b[j] = False
 
     yield 2
@@ -94,7 +94,7 @@ def sieve_upto(n):
         discard_multiples(p)
 
     p = __primes[-1] + 2
-    while p*p < n:
+    while p * p < n:
         i = p // 2
         if b[i]:
             __primes.append(p)
@@ -107,47 +107,48 @@ def sieve_upto(n):
             __primes.append(p)
             yield p
         p += 2
-    print >>sys.stderr, 'array len', len(b)
+    print >> sys.stderr, 'array len', len(b)
+
+__b = set()
 
 def set_sieve_upto(n):
     if n < 2:
-       return
+        return
 
-    b = set()
     def discard_multiples(p):
-        for j in xrange(p*p, n, p):
-            if p in b:
+        for j in xrange(p * p, n, p):
+            if j in __b:
                 break
-            b.add(p)
+            __b.add(j)
 
     yield 2
     for p in __primes[1:]:
         if p > n:
-           return
+            return
         yield p
         discard_multiples(p)
 
     p = __primes[-1] + 2
-    while p*p < n:
-        if p not in b:
+    while p * p < n:
+        if p not in __b:
             __primes.append(p)
             yield p
             discard_multiples(p)
         p += 2
     for p in xrange(p, n, 2):
-        if p not in b:
+        if p not in __b:
             __primes.append(p)
             yield p
-    print 'set len', len(b)
+    print 'set len', len(__b)
 
 def test(pr):
-    N = 10**7
+    N = 10 ** 7
     s = 0
     for p in pr(N):
         s += 1
         assert p <= N, '%d %d' % (p, N)
         assert is_prime(p)
-    s=0
+    s = 0
     for p in pr(N):
         s += 1
         assert p <= N, '%d %d' % (p, N)
@@ -159,12 +160,20 @@ if __name__ == '__main__':
 #    test(set_sieve_upto)
 
     from timeit import timeit
-    print timeit('test(primes_upto)', 
-                    'from primality import test, primes_upto', 
+#    print 'primest_upto'
+#    print timeit('test(primes_upto)',
+#                    'from primality import test, primes_upto',
+#                    number=4)
+    print 'set_sieve_output'
+    print timeit('test(set_sieve_upto)',
+                    'from primality import test, set_sieve_upto',
                     number=4)
-    print timeit('test(set_sieve_upto)', 
-                    'from primality import test, set_sieve_upto', 
+    print 'sieve_output'
+    print timeit('test(sieve_upto)',
+                    'from primality import test, sieve_upto',
                     number=4)
-    print timeit('test(sieve_upto)', 
-                    'from primality import test, sieve_upto', 
-                    number=4)
+
+
+
+
+

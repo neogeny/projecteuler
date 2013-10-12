@@ -1,4 +1,3 @@
-#Sun May 22 10:27:35 VET 2011
 eclipse.preferences.version=1
 encoding//src/digits.py=utf-8
 encoding//src/euler001.py=utf-8
@@ -56,6 +55,7 @@ encoding//src/libeuler187.py=utf-8
 encoding//src/memoization.py=utf-8
 encoding//src/palindromes.py=utf-8
 encoding//src/primality.py=utf-8
+encoding//src/primes.py=utf-8
 encoding//src/series.py=utf-8
 encoding//src/setup.py=utf-8
 encoding//src/template.py=utf-8
