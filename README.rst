@@ -30,4 +30,4 @@ To run the tests just issue::
 
 at the commandline. The tests won't work with optimizations (``-O``) enabled because of the reliance on Python_ assertions.
 
-Tu solve the problems, run each ``src/eulerXXX.py`` program individually.
+To solve the problems, run each ``src/eulerXXX.py`` program individually.
