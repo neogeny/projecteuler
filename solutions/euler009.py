@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 9
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
@@ -18,18 +16,20 @@ There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 Find the product abc.
 """
 
-# Solve for b the system of eauations
+# Solve for b the system of equations
 # a2 + b2 = c2
 # a + b + c = 1000
 
 from math import sqrt
-from functools import reduce as rdc
+from functools import reduce
+from operator import __mul__
+
 
 def pythagorean_triplet_that_sums(s):
     def solve_b(a):
         return s * (s // 2 - a) // (s - a)
 
-    for a in xrange(1, s):
+    for a in range(1, s):
         b = solve_b(a)
         if b < a:
             break
@@ -43,12 +43,19 @@ def pythagorean_triplet_that_sums(s):
         if a + b + c == s:
             return (a , b , c)
 
+
 def prod(q):
-    return rdc(lambda x, y:x * y, q, 1)
+    return reduce(__mul__, q, 1)
+
+
+def prod_of_pythagorean_triplet_that_sums(s):
+    return prod(pythagorean_triplet_that_sums(s))
+
 
 def test():
-    assert 3 * 4 * 5 == prod(pythagorean_triplet_that_sums(3 + 4 + 5))
+    assert 3 * 4 * 5 == prod_of_pythagorean_triplet_that_sums(3 + 4 + 5)
+
 
 if __name__ == '__main__':
     test()
-    print prod(pythagorean_triplet_that_sums(1000))
+    print(prod_of_pythagorean_triplet_that_sums(1000))
