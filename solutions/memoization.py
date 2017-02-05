@@ -8,4 +8,8 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Memoization.
 """
-import functools import lru_cache as memoize # noqa
+from functools import lru_cache
+
+
+def memoize(fun):
+    return lru_cache(None)(fun)
