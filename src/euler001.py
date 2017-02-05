@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """
 Solution to Project Euler Problem 1
 http://projecteuler.net/
