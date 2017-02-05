@@ -1,15 +1,13 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 18
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
-By starting at the top of the triangle below and moving to adjacent numbers on 
+By starting at the top of the triangle below and moving to adjacent numbers on
 the row below, the maximum total from top to bottom is 23.
 
 3
@@ -21,6 +19,10 @@ That is, 3 + 7 + 4 + 9 = 23.
 
 Find the maximum total from top to bottom of the triangle below:
 """
+from copy import deepcopy
+from graphs import build_graph_from_triangle, find_max_path
+
+
 STRIANGLE = """
 75
 95 64
@@ -42,18 +44,17 @@ STRIANGLE = """
 NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route. However, Problem 67, is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)
 """
 
-from copy import deepcopy
-from graphs import build_graph_from_triangle, find_max_path
-
 LINES = [s.split() for s in STRIANGLE.strip().split('\n')]
 TRIANGLE = [[int(s) for s in line] for line in LINES]
 
-def bruteforce(triangle):
-    T = deepcopy(triangle)
-    for i in reversed(xrange(len(T) - 1)):
-        for j, _ in enumerate(T[i]):
-            T[i][j] += max(T[i + 1][j], T[i + 1][j + 1])
-    return T[0][0]
+
+def max_path_value_sweep(triangle):
+    t = deepcopy(triangle)
+    for i in reversed(range(len(t) - 1)):
+        for j, _ in enumerate(t[i]):
+            t[i][j] += max(t[i + 1][j], t[i + 1][j + 1])
+    return t[0][0]
+
 
 def test():
     T = [[3],
@@ -61,10 +62,11 @@ def test():
         [2, 4 , 6, ],
         [8, 5 , 9, 3]
         ]
-    assert 23 == bruteforce(T)
+    assert 23 == max_path_value_sweep(T)
+
 
 if __name__ == '__main__':
     test()
     graph, start, stop = build_graph_from_triangle(TRIANGLE)
-    print find_max_path(graph, start, stop)
-    print bruteforce(TRIANGLE)
+    print(find_max_path(graph, start, stop)[0])
+    print(max_path_value_sweep(TRIANGLE))
