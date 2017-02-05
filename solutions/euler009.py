@@ -41,7 +41,7 @@ def pythagorean_triplet_that_sums(s):
 
 #        print a, b, c, a + b + c
         if a + b + c == s:
-            return (a , b , c)
+            return (a, b, c)
 
 
 def prod(q):
