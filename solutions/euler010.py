@@ -1,20 +1,18 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 10
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
 Find the sum of all the primes below two million.
 """
-
 from primality import all_primes
+
 
 def sum_primes(up_to):
     result = 0
@@ -24,8 +22,10 @@ def sum_primes(up_to):
         result += p
     return result
 
+
 def test():
     assert 17 == sum_primes(10)
 
+
 if __name__ == '__main__':
-    print sum_primes(2 * 10 ** 6)
+    print(sum_primes(2 * 10 ** 6))

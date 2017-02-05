@@ -57,4 +57,3 @@ def test():
 if __name__ == '__main__':
     test()
     print(largest_product_of(13, TARGET))
-
