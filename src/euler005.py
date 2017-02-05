@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 5
 http://projecteuler.net/
@@ -20,7 +18,7 @@ TARGET = 20
 
 
 def range_mcm(m):
-    return mcm(xrange(2, m + 1))
+    return mcm(range(2, m + 1))
 
 
 def test():
@@ -29,4 +27,4 @@ def test():
 
 if __name__ == '__main__':
     test()
-    print range_mcm(TARGET)
+    print(range_mcm(TARGET))

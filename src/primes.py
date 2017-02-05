@@ -11,25 +11,25 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Prime numbers.
 """
-import sys
 from math import sqrt
 from bisect import bisect_left as bisect
-from itertools import count
+
 
 __primes = [
-           2, 3, 5, 7,
-           11, 13, 17, 19,
-           23, 29,
-           31, 37,
-           41, 43, 47,
-           53, 59,
-           61, 67,
-           71, 73, 79,
-           83, 89,
-           97
-           ]
+    2, 3, 5, 7,
+    11, 13, 17, 19,
+    23, 29,
+    31, 37,
+    41, 43, 47,
+    53, 59,
+    61, 67,
+    71, 73, 79,
+    83, 89,
+    97,
+]
 
 __excludes = set([4, 2, 8])
+
 
 def discard_multiples(p, m):
     start = max([max(__excludes), p * p])
@@ -38,18 +38,21 @@ def discard_multiples(p, m):
             break
         __excludes.add(j)
 
+
 def init(m=None):
-    if m == None:
+    if m is None:
         m = __primes[-1]
     for p in __primes[1:]:
         discard_multiples(p, m)
 init()
+
 
 def known_prime(n):
     if n <= __primes[-1]:
         i = bisect(__primes, n)
         return __primes[i] == n
     return False
+
 
 def is_prime(n):
     n = abs(n)
@@ -59,6 +62,7 @@ def is_prime(n):
         return True
     else:
         return all(n % p for p in primes_upto(int(sqrt(n))))
+
 
 def primes_upto(m):
     for p in __primes:
