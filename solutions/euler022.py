@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 22
 http://projecteuler.net/
@@ -25,17 +23,23 @@ What is the total of all the name scores in the file?
 import csv
 from words import alphabetical_value
 
-NAMES = sorted(csv.reader(open('data/names.txt', 'r')).next())
+FILENAME = '../data/names.txt'
+NAMES = sorted(next(csv.reader(open(FILENAME))))
+
 
 def sum_alphabetical_values(names):
-    return sum((i + 1) * alphabetical_value(s) for i, s in enumerate(names))
+    return sum(
+        i * alphabetical_value(s)
+        for i, s in enumerate(names, start=1)
+    )
+
 
 def test():
     name = NAMES[938 - 1]
     assert 'COLIN' == name
     assert 53 == alphabetical_value(name)
 
+
 if __name__ == '__main__':
     test()
-    print sum_alphabetical_values(NAMES)
-
+    print(sum_alphabetical_values(NAMES))

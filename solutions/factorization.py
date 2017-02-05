@@ -78,13 +78,13 @@ def multiples(factor_list):
     else:
         n, k = factor_list[0]
         for j in multiples(factor_list[1:]):
-            for i in xrange(1, k + 1):
+            for i in range(1, k + 1):
                 yield n ** i * j
 
 
 def divisors(t):
     f = list(factors(t))
-    for s in xrange(len(f) + 1):
+    for s in range(len(f) + 1):
         for c in combinations(f, s):
             for m in multiples(c):
                 yield m

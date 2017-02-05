@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 20
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 n! means n × (n − 1) × ... × 3 × 2 × 1
@@ -19,13 +17,15 @@ Find the sum of the digits in the number 100!
 from series import factorial
 from digits import digits
 
+
 def sumdigits(n):
     return sum(digits(n))
+
 
 def test():
     assert 27 == sumdigits(factorial(10))
 
+
 if __name__ == '__main__':
     test()
-
-    print sumdigits(factorial(100))
+    print(sumdigits(factorial(100)))
