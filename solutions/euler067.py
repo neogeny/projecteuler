@@ -42,4 +42,4 @@ def test():
 
 if __name__ == '__main__':
     test()
-    print euler018.bruteforce(TRIANGLE)
+    print euler018.max_path_value_sweep(TRIANGLE)
