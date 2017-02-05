@@ -59,9 +59,9 @@ def max_path_value_sweep(triangle):
 def test():
     T = [[3],
         [7, 4],
-        [2, 4 , 6, ],
-        [8, 5 , 9, 3]
-        ]
+        [2, 4, 6, ],
+        [8, 5, 9, 3]
+    ]
     assert 23 == max_path_value_sweep(T)
 
 
