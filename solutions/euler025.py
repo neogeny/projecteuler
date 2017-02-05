@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 25
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 
@@ -35,14 +33,17 @@ What is the first term in the Fibonacci sequence to contain 1000 digits?
 """
 from series import all_fibs
 
-def first_fib_with_digits(n):
-    for i, f in enumerate(all_fibs()):
+
+def first_fib_with_len(n):
+    for i, f in enumerate(all_fibs(), start=1):
         if len(str(f)) >= n:
-            return i + 1
+            return i
+
 
 def test():
-    assert 12 == first_fib_with_digits(3)
+    assert 12 == first_fib_with_len(3)
+
 
 if __name__ == '__main__':
     test()
-    print first_fib_with_digits(1000)
+    print(first_fib_with_len(1000))
