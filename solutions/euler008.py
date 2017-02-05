@@ -1,16 +1,17 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 8
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Find the greatest product of five consecutive digits in the 1000-digit number.
 """
+from functools import reduce
+from operator import __mul__
+
 
 STARGET = """
 73167176531330624919225119674426574742355349194934
@@ -34,21 +35,26 @@ STARGET = """
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
 """
-from functools import reduce as rdc
 
 STARGET = ''.join(STARGET.strip().split())
 
 TARGET = [int(c) for c in STARGET]
 
+
 def largest_product_of(n, m):
-    mul = lambda x, y: x * y
-    prod_n_at = lambda k : rdc(mul, m[k:k + n], 1)
-    return max(prod_n_at(i) for i in xrange(len(m) - n))
+    return max(
+        reduce(__mul__, m[i:i + n], 1)
+        for i in range(len(m) - n)
+    )
+
 
 def test():
     assert 9 == largest_product_of(1, TARGET)
+    assert 81 == largest_product_of(2, TARGET)
+    assert 5832 == largest_product_of(4, TARGET)
+
 
 if __name__ == '__main__':
     test()
-    print largest_product_of(5, TARGET)
+    print(largest_product_of(13, TARGET))
 
