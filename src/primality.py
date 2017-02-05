@@ -11,7 +11,6 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Prime numbers.
 """
-import sys
 from math import sqrt
 from bisect import bisect_left as bisect
 from itertools import count
@@ -113,7 +112,6 @@ def sieve_upto(n):
             __primes.append(p)
             yield p
         p += 2
-    print >> sys.stderr, 'array len', len(b)
 
 __b = set()
 
@@ -146,7 +144,6 @@ def set_sieve_upto(n):
         if p not in __b:
             __primes.append(p)
             yield p
-    print 'set len', len(__b)
 
 
 def test(pr):
@@ -161,22 +158,23 @@ def test(pr):
         s += 1
         assert p <= N, '%d %d' % (p, N)
         assert is_prime(p)
-    print N, s, p
+
 
 if __name__ == '__main__':
-#    test(sieve_upto)
-#    test(set_sieve_upto)
-
     from timeit import timeit
-#    print 'primest_upto'
-#    print timeit('test(primes_upto)',
-#                    'from primality import test, primes_upto',
-#                    number=4)
-    print 'set_sieve_output'
-    print timeit('test(set_sieve_upto)',
-                    'from primality import test, set_sieve_upto',
-                    number=4)
-    print 'sieve_output'
-    print timeit('test(sieve_upto)',
-                    'from primality import test, sieve_upto',
-                    number=4)
+    print('set_sieve_output')
+    print(
+        timeit(
+            'test(set_sieve_upto)',
+            'from primality import test, set_sieve_upto',
+            number=4
+        )
+    )
+    print('sieve_output')
+    print(
+        timeit(
+            'test(sieve_upto)',
+            'from primality import test, sieve_upto',
+            number=4
+        )
+    )

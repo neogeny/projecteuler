@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
 
 """
 Solutions to Project Euler Problems
@@ -11,7 +10,6 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Factorization.
 """
-from math import sqrt
 from itertools import combinations
 from primality import primes_upto, known_prime
 
@@ -94,7 +92,7 @@ def divisors(t):
 
 if __name__ == '__main__':
     def list_factors(n):
-        print n, list(factors(n))
+        print(n, list(factors(n)))
     list_factors(4)
     list_factors(7)
     list_factors(27)
