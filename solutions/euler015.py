@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 15
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 
@@ -16,6 +14,8 @@ How many routes are there through a 20×20 grid?
 """
 
 __seen = {}
+
+
 def count_routes(n, m):
     if n == 0 or m == 0:
         return 1
@@ -27,16 +27,18 @@ def count_routes(n, m):
         result = 2 * count_routes(n, m - 1)
     else:
         result = (
-          count_routes(n - 1, m)
-        + count_routes(n, m - 1)
+            count_routes(n - 1, m) +
+            count_routes(n, m - 1)
         )
     __seen[(n, m)] = result
     __seen[(m, n)] = result
     return result
 
+
 def test():
     assert 6 == count_routes(2, 2)
 
+
 if __name__ == '__main__':
     test()
-    print count_routes(20, 20)
+    print(count_routes(20, 20))

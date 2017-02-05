@@ -25,7 +25,7 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 """
 
 
-__count = {1:1}
+__count = {1: 1}
 
 
 def next_collaz(n):
