@@ -20,7 +20,7 @@ one in value, and containing two digits in the numerator and denominator.
 If the product of these four fractions is given in its lowest common terms,
 find the value of the denominator.
 """
-import  operator
+import operator
 from functools import reduce
 from fractions import Fraction
 
