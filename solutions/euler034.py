@@ -1,17 +1,15 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 34
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
 
-Find the sum of all numbers which are equal to the sum of the factorial of 
+Find the sum of all numbers which are equal to the sum of the factorial of
 their digits.
 
 Note: as 1! = 1 and 2! = 2 are not sums they are not included.
@@ -20,8 +18,10 @@ from itertools import count
 from digits import digits
 from series import factorial
 
+
 def sum_fact_digits(n):
     return sum(factorial(d) for d in digits(n))
+
 
 def list_sum_fact_digits():
     f9 = factorial(9)
@@ -32,9 +32,11 @@ def list_sum_fact_digits():
         if n == sum_fact_digits(n):
             yield n
 
+
 def test():
     assert 145 == sum_fact_digits(145)
 
+
 if __name__ == '__main__':
     test()
-    print sum(list_sum_fact_digits())
+    print(sum(list_sum_fact_digits()))
