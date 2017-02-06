@@ -13,7 +13,7 @@ from memoization import memoize
 
 
 def seq2str(q):
-    return ''.join(q)
+    return ''.join(str(c) for c in q)
 
 
 def sdigits(n):
@@ -34,11 +34,11 @@ def last_k_digits(k, n):
 
 @memoize
 def digits_upto(k, i=0):
-    return seq2str(str(c) for c in xrange(i, min(9, k) + 1))
+    return seq2str(range(i, min(k + 1, 10)))
 
 
 def digits_downfrom(k, i=0):
-    return digits_upto(k, i)[::-1]
+    return seq2str(range(min(k + 1, 10), i, -1))
 
 
 def sorted_digits_str(n):
@@ -51,10 +51,10 @@ def is_semi_pandigital(n):
 
 
 def is_pandigital(n, k=9):
-    return sorted_digits(n) == digits_upto(k, 1)
+    return set(digits(n)) == set(digits(digits_upto(k, 1)))
 
 
 def digit_rotations(n):
     d = str(n)
-    for i in xrange(len(d)):
+    for i in range(len(d)):
         yield int(d[i:] + d[:i])
