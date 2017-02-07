@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 22
 http://projecteuler.net/
@@ -11,14 +9,19 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 """
 import csv
+from pathlib import Path
 from words import alphabetical_value
 from series import is_triangle
 
-FILENAME = 'data/words.txt'
+
+FILENAME = Path(__file__).parent / '../data/words.txt'
 
 
 def count_triangle_words(names):
-    return sum(1 for w in names if is_triangle(alphabetical_value(w)))
+    return sum(
+        1
+        for w in names if is_triangle(alphabetical_value(w))
+    )
 
 
 def test():
@@ -27,8 +30,8 @@ def test():
 
 
 def run():
-    names = csv.reader(open(FILENAME, 'r')).next()
-    print count_triangle_words(names)
+    names = next(csv.reader(open(FILENAME)))
+    print(count_triangle_words(names))
 
 
 if __name__ == '__main__':

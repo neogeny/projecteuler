@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 43
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
 The number, 1406357289, is a 0 to 9 pandigital number because it is made up of each of the digits 0 to 9 in some order, but it also has a rather interesting sub-string divisibility property.
@@ -22,19 +20,21 @@ Let d1 be the 1st digit, d2 be the 2nd digit, and so on. In this way, we note th
     d8d9d10=289 is divisible by 17
 
 Find the sum of all 0 to 9 pandigital numbers with this property.
-    
+
 """
 from primality import nth_prime
 from digits import digits_upto
 from itertools import permutations
 
+
 def is_subdivisible(n):
     sn = str(n)
-    for i in xrange(1, 8):
+    for i in range(1, 8):
         if int(sn[i:i + 3]) % nth_prime(i):
             break
     else:
         return True
+
 
 def subdivisible_pandigitals(k, i=0):
     digits = digits_upto(k, i)
@@ -45,11 +45,14 @@ def subdivisible_pandigitals(k, i=0):
         if is_subdivisible(n):
             yield n
 
+
 def test():
     assert is_subdivisible(1406357289)
 
+
 def run():
-    print sum(subdivisible_pandigitals(9))
+    print(sum(subdivisible_pandigitals(9)))
+
 
 if __name__ == '__main__':
     test()

@@ -1,15 +1,13 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem 46
 http://projecteuler.net/
 
 by Apalala <apalala@gmail.com>
-(cc) Attribution-ShareAlike 
+(cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
-It was proposed by Christian Goldbach that every odd composite number can be 
+It was proposed by Christian Goldbach that every odd composite number can be
 written as the sum of a prime and twice a square.
 
 9 = 7 + 2×12
@@ -21,17 +19,19 @@ written as the sum of a prime and twice a square.
 
 It turns out that the conjecture was false.
 
-What is the smallest odd composite that cannot be written as the sum of a prime 
+What is the smallest odd composite that cannot be written as the sum of a prime
 and twice a square?
 """
 from math import sqrt
 from itertools import count
 from primality import is_prime, primes_upto
 
+
 def odd_composites(upfrom=4):
     for n in count(upfrom):
         if n % 2 and not is_prime(n):
             yield n
+
 
 def is_prime_plus_2square(n):
     for p in primes_upto(n):
@@ -39,10 +39,12 @@ def is_prime_plus_2square(n):
         if c == int(c):
             return True
 
+
 def first_non_prime_plus_2square():
     for n in odd_composites():
         if not is_prime_plus_2square(n):
             return n
+
 
 def test():
     assert is_prime_plus_2square(9)
@@ -52,7 +54,12 @@ def test():
     assert is_prime_plus_2square(27)
     assert is_prime_plus_2square(33)
 
+
+def run():
+    print(first_non_prime_plus_2square())
+
+
 if __name__ == '__main__':
     test()
-    print first_non_prime_plus_2square()
+    run()
 
