@@ -59,6 +59,7 @@ def test():
     assert is_right_prime(3797)
     assert {3137, 37, 73, 797, 3797, 53, 23, 313, 317, 373} == truncatable_primes(10 ** 4)
 
+
 if __name__ == '__main__':
     test()
     print(sum(truncatable_primes(10 ** 6)))

@@ -50,8 +50,9 @@ def is_semi_pandigital(n):
     return '0' not in s and len(s) == len(set(s))
 
 
-def is_pandigital(n, k=9):
-    return set(digits(n)) == set(digits(digits_upto(k, 1)))
+def is_pandigital(n):
+    d = str(n)
+    return sorted(d) == list(digits_upto(len(d), 1))
 
 
 def digit_rotations(n):
