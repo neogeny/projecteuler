@@ -41,6 +41,10 @@ def test():
     assert 53 == alphabetical_value(name)
 
 
+def run():
+    print(sum_alphabetical_values(NAMES))
+
+
 if __name__ == '__main__':
     test()
-    print(sum_alphabetical_values(NAMES))
+    run()

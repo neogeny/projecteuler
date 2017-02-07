@@ -30,6 +30,10 @@ def test():
     assert 2640 == ssq_sqs_diff(10)
 
 
+def run():
+    print(ssq_sqs_diff(100))
+
+
 if __name__ == '__main__':
     test()
-    print(ssq_sqs_diff(100))
+    run()

@@ -54,6 +54,10 @@ def test():
     assert 5832 == largest_product_of(4, TARGET)
 
 
+def run():
+    print(largest_product_of(13, TARGET))
+
+
 if __name__ == '__main__':
     test()
-    print(largest_product_of(13, TARGET))
+    run()

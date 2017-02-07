@@ -26,6 +26,10 @@ def test():
     assert 27 == sumdigits(factorial(10))
 
 
+def run():
+    print(sumdigits(factorial(100)))
+
+
 if __name__ == '__main__':
     test()
-    print(sumdigits(factorial(100)))
+    run()

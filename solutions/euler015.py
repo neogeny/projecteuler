@@ -39,6 +39,10 @@ def test():
     assert 6 == count_routes(2, 2)
 
 
+def run():
+    print(count_routes(20, 20))
+
+
 if __name__ == '__main__':
     test()
-    print(count_routes(20, 20))
+    run()

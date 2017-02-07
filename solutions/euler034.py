@@ -37,6 +37,10 @@ def test():
     assert 145 == sum_fact_digits(145)
 
 
+def run():
+    print(sum(list_sum_fact_digits()))
+
+
 if __name__ == '__main__':
     test()
-    print(sum(list_sum_fact_digits()))
+    run()

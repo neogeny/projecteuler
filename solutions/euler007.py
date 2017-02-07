@@ -20,6 +20,10 @@ def test():
     assert 13 == nth_prime(6)
 
 
+def run():
+    print(nth_prime(10001))
+
+
 if __name__ == '__main__':
     test()
-    print(nth_prime(10001))
+    run()

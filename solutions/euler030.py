@@ -43,6 +43,10 @@ def test():
     assert 19316 == sum(numbers_that_sum_power_of_digits(4))
 
 
+def run():
+    print(sum(numbers_that_sum_power_of_digits(5)))
+
+
 if __name__ == '__main__':
     test()
-    print(sum(numbers_that_sum_power_of_digits(5)))
+    run()

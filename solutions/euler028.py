@@ -41,6 +41,10 @@ def test():
     assert 101 == spiral_diagonal_sum(5)
 
 
+def run():
+    print(spiral_diagonal_sum(1001))
+
+
 if __name__ == '__main__':
     test()
-    print(spiral_diagonal_sum(1001))
+    run()

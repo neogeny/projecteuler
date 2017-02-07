@@ -60,6 +60,10 @@ def test():
     assert {3137, 37, 73, 797, 3797, 53, 23, 313, 317, 373} == truncatable_primes(10 ** 4)
 
 
+def run():
+    print(sum(truncatable_primes(10 ** 6)))
+
+
 if __name__ == '__main__':
     test()
-    print(sum(truncatable_primes(10 ** 6)))
+    run()

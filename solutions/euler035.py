@@ -35,6 +35,10 @@ def test():
     assert 13 == count_circular_primes(10 ** 2)
 
 
+def run():
+    print(count_circular_primes(10 ** 6))
+
+
 if __name__ == '__main__':
     test()
-    print(count_circular_primes(10 ** 6))
+    run()

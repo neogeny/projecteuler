@@ -65,8 +65,11 @@ def test():
     assert 23 == max_path_value_sweep(T)
 
 
+def run():
+    graph, start, stop = build_graph_from_triangle(TRIANGLE)
+    print(max_path_value_sweep(TRIANGLE), find_max_path(graph, start, stop)[0])
+
+
 if __name__ == '__main__':
     test()
-    graph, start, stop = build_graph_from_triangle(TRIANGLE)
-    print(find_max_path(graph, start, stop)[0])
-    print(max_path_value_sweep(TRIANGLE))
+    run()

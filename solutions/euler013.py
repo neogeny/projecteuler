@@ -119,5 +119,10 @@ def test():
     pass
 
 
-if __name__ == '__main__':
+def run():
     print(str(sum(NUMBERS))[:10])
+
+
+if __name__ == '__main__':
+    test()
+    run()

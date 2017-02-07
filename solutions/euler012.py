@@ -64,6 +64,10 @@ def test():
     assert 28 == first_triangle_with_divisors(5)
 
 
+def run():
+    print(first_triangle_with_divisors(500))
+
+
 if __name__ == '__main__':
     test()
-    print(first_triangle_with_divisors(500))
+    run()

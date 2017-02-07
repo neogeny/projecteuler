@@ -27,5 +27,10 @@ def test():
     assert 17 == sum_primes(10)
 
 
-if __name__ == '__main__':
+def run():
     print(sum_primes(2 * 10 ** 6))
+
+
+if __name__ == '__main__':
+    test()
+    run()

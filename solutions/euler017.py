@@ -43,6 +43,10 @@ def test():
     assert 23 == len(num2only_letters(342)), len(num2only_letters(342))
 
 
+def run():
+    print(sum_word_len(1000))
+
+
 if __name__ == '__main__':
     test()
-    print(sum_word_len(1000))
+    run()

@@ -91,6 +91,10 @@ def test():
     assert 1788696 == prod(diagonal(GRID, 6, 8, 4))
 
 
+def run():
+    print(maxprod(GRID, 4))
+
+
 if __name__ == '__main__':
     test()
-    print(maxprod(GRID, 4))
+    run()

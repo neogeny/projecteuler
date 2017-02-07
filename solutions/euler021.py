@@ -47,6 +47,10 @@ def test():
     assert d(220) == 284 and d(284) == 220
 
 
+def run():
+    print(sum(amicables(10 ** 4)))
+
+
 if __name__ == '__main__':
     test()
-    print(sum(amicables(10 ** 4)))
+    run()

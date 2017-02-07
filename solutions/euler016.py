@@ -21,6 +21,10 @@ def test():
     assert 26 == sum_pow2_digist(15)
 
 
+def run():
+    print(sum_pow2_digist(1000))
+
+
 if __name__ == '__main__':
     test()
-    print(sum_pow2_digist(1000))
+    run()

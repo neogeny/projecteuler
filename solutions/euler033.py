@@ -55,7 +55,11 @@ def test():
     assert Fraction(4, 8) == unortodox_denom(49, 98)
 
 
-if __name__ == '__main__':
-    test()
+def run():
     numbers = list(unortodox_fractions(2))
     print(reduce(operator.mul, numbers, 1).denominator)
+
+
+if __name__ == '__main__':
+    test()
+    run()

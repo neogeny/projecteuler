@@ -38,6 +38,10 @@ def test():
     pass
 
 
+def run():
+    print(withdates())
+
+
 if __name__ == '__main__':
     test()
-    print(withdates())
+    run()
