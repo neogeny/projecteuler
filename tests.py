@@ -35,19 +35,20 @@ if __name__ == '__main__':
     for filename in sorted(glob('solutions/euler*.py')):
         filename = os.path.basename(filename)
         name, _ = os.path.splitext(filename)
+        print('%-40s ' % name, end='')
         try:
-            t = timeit('test()', 'from ' + name + ' import test', number=1)
+            t = timeit('test();run()', 'from ' + name + ' import test, run', number=1)
             total += t
             count += 1
-#            print name, '{:4.6f}'.format(t)
         except KeyboardInterrupt:
             break
         except ImportError as e:
-            print(name, 'untested', e)
+            print('untested', e)
         except AssertionError as ae:
             failed += 1
-            print(name, 'FAILED!')
+            print('FAILED!')
         except Exception as e:
             failed += 1
-            print(name, e)
+            print(e)
+    print()
     print('total time for', count, 'problems,', failed, 'failed, is:', total)

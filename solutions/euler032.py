@@ -25,7 +25,7 @@ from digits import digits_downfrom
 
 
 def is_pandigital_product(a, b, n, k=9):
-    return is_pandigital(str(a) + str(b) + str(n), k)
+    return is_pandigital(str(a) + str(b) + str(n))
 
 
 def find_pandigital_products(k):
@@ -48,6 +48,10 @@ def test():
     assert not is_semi_pandigital(3543)
 
 
+def run():
+    print(sum(set(n for _a, _b, n in find_pandigital_products(9))))
+
+
 if __name__ == '__main__':
     test()
-    print(sum(set(n for _a, _b, n in find_pandigital_products(9))))
+    run()

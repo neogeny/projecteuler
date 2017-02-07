@@ -33,6 +33,10 @@ def test():
     assert '210' == nth_permutation('012', 6)
 
 
+def run():
+    print(nth_permutation('0123456789', 10 ** 6))
+
+
 if __name__ == '__main__':
     test()
-    print(nth_permutation('0123456789', 10 ** 6))
+    run()

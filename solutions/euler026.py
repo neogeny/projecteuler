@@ -50,6 +50,10 @@ def test():
     assert 7 == find_longest_recurring(10)[1]
 
 
+def run():
+    print(find_longest_recurring(1000)[1])
+
+
 if __name__ == '__main__':
     test()
-    print(find_longest_recurring(1000)[1])
+    run()

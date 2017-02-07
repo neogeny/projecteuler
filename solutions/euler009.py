@@ -56,6 +56,10 @@ def test():
     assert 3 * 4 * 5 == prod_of_pythagorean_triplet_that_sums(3 + 4 + 5)
 
 
+def run():
+    print(prod_of_pythagorean_triplet_that_sums(1000))
+
+
 if __name__ == '__main__':
     test()
-    print(prod_of_pythagorean_triplet_that_sums(1000))
+    run()

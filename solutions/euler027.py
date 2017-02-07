@@ -65,7 +65,11 @@ def test():
     assert (39, 1, 41) == ab_prime_generator_with_max_len(0, 43)
 
 
-if __name__ == '__main__':
-    test()
+def run():
     longest = ab_prime_generator_with_max_len(-1000 + 1, 1000)
     print(longest[1] * longest[2])
+
+
+if __name__ == '__main__':
+    test()
+    run()

@@ -58,5 +58,10 @@ def test():
     assert 10 == collaz_seq_len(13)
 
 
-if __name__ == '__main__':
+def run():
     print(max_collaz_seq_len(10 ** 6))
+
+
+if __name__ == '__main__':
+    test()
+    run()

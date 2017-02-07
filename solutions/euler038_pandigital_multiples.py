@@ -53,6 +53,10 @@ def test():
     assert is_pandigital(concatenated_product(9, 5))
 
 
+def run():
+    print(largest_pandigital_concatenated_product())
+
+
 if __name__ == '__main__':
     test()
-    print(largest_pandigital_concatenated_product())
+    run()

@@ -33,6 +33,9 @@ def test():
     assert 15 == len(power_combinations(5))
 
 
+def run():
+    print(len(power_combinations(100)))
+
 if __name__ == '__main__':
     test()
-    print(len(power_combinations(100)))
+    run()

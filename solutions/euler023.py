@@ -51,6 +51,10 @@ def test():
     assert set(range(1, 30)) - {24} == set(not_sum_of_abundants(30))
 
 
+def run():
+    print(sum(not_sum_of_abundants(28123)))
+
+
 if __name__ == '__main__':
     test()
-    print(sum(not_sum_of_abundants(28123)))
+    run()

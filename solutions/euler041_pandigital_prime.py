@@ -36,6 +36,10 @@ def test():
     assert 2143 in set(pandigital_primes(digits=4))
 
 
+def run():
+    print(list(pandigital_primes())[-1])
+
+
 if __name__ == '__main__':
     test()
-    print(list(pandigital_primes())[-1])
+    run()

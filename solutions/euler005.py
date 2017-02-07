@@ -25,6 +25,10 @@ def test():
     assert 2520 == range_mcm(10)
 
 
+def run():
+    print(range_mcm(TARGET))
+
+
 if __name__ == '__main__':
     test()
-    print(range_mcm(TARGET))
+    run()

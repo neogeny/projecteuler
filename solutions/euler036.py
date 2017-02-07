@@ -36,6 +36,10 @@ def test():
     assert is_palindrome(585) and is_palindrome(to_binary(585))
 
 
+def run():
+    print(sum_dec_and_bin_palindromes(10 ** 6))
+
+
 if __name__ == '__main__':
     test()
-    print(sum_dec_and_bin_palindromes(10 ** 6))
+    run()
