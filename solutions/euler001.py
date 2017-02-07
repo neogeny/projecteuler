@@ -22,6 +22,10 @@ def test():
     assert 23 == sum_of_3_or_5_div(10)
 
 
+def run():
+    print(sum_of_3_or_5_div(1000))
+
+
 if __name__ == '__main__':
     test()
-    print(sum_of_3_or_5_div(1000))
+    run()

@@ -33,6 +33,10 @@ def test():
     assert 9009 == largest_palindromic(2)
 
 
+def run():
+    print(largest_palindromic(3))
+
+
 if __name__ == '__main__':
     test()
-    print(largest_palindromic(3))
+    run()
