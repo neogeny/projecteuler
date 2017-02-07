@@ -21,9 +21,10 @@ name in the list. So, COLIN would obtain a score of 938 × 53 = 49714.
 What is the total of all the name scores in the file?
 """
 import csv
+from pathlib import Path
 from words import alphabetical_value
 
-FILENAME = '../data/names.txt'
+FILENAME = Path(__file__).parent / '../data/names.txt'
 NAMES = sorted(next(csv.reader(open(FILENAME))))
 
 

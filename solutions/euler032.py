@@ -43,9 +43,10 @@ def find_pandigital_products(k):
 
 def test():
     assert is_pandigital(978564231)
-    assert is_pandigital(13452, 5)
+    assert is_pandigital(13452)
     assert is_semi_pandigital(543)
     assert not is_semi_pandigital(3543)
+
 
 if __name__ == '__main__':
     test()

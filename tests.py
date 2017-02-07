@@ -15,13 +15,13 @@ import sys
 from glob import glob
 import os
 from timeit import timeit
-sys.path.insert(0, 'src')
+sys.path.insert(0, 'solutions')
 
 
 def test_assertions_on():
     try:
         assert False
-        print 'Please turn on assertions!'
+        print('Please turn on assertions!')
         sys.exit()
     except AssertionError:
         pass
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     total = 0
     count = 0
     failed = 0
-    for filename in sorted(glob('src/euler*.py')):
+    for filename in sorted(glob('solutions/euler*.py')):
         filename = os.path.basename(filename)
         name, _ = os.path.splitext(filename)
         try:
@@ -42,9 +42,12 @@ if __name__ == '__main__':
 #            print name, '{:4.6f}'.format(t)
         except KeyboardInterrupt:
             break
-        except ImportError:
-            print name, 'untested'
+        except ImportError as e:
+            print(name, 'untested', e)
         except AssertionError as ae:
             failed += 1
-            print name, 'FAILED!'
-    print 'total time for', count, 'problems,', failed, 'failed, is:', total
+            print(name, 'FAILED!')
+        except Exception as e:
+            failed += 1
+            print(name, e)
+    print('total time for', count, 'problems,', failed, 'failed, is:', total)
