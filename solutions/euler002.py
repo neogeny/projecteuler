@@ -27,6 +27,10 @@ def test():
     assert 10 == even_fibs_sum(10)
 
 
+def run():
+    print(even_fibs_sum(4 * 10 ** 6))
+
+
 if __name__ == '__main__':
     test()
-    print(even_fibs_sum(4 * 10 ** 6))
+    run()

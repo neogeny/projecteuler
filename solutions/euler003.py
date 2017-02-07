@@ -23,7 +23,9 @@ def largest_prime_factor(n):
 def test():
     assert 29 == largest_prime_factor(13195)
 
+def run():
+    print(largest_prime_factor(TARGET))
 
 if __name__ == '__main__':
     test()
-    print(largest_prime_factor(TARGET))
+    run()
