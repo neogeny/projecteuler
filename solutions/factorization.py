@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """
 Solutions to Project Euler Problems
 http://projecteuler.net/
@@ -10,8 +9,9 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Factorization.
 """
+from math import sqrt
 from itertools import combinations
-from primality import primes_upto, known_prime
+from itertools import groupby
 
 
 def factor(n, m):
@@ -25,27 +25,36 @@ def factor(n, m):
     return (n, m, k)
 
 
-def factors(n):
-    while n > 1:
-        if known_prime(n):
-            yield (n, 1)
-            break
+def prime_factors(n):
+    if n < 2:
+        return
 
-        for m in primes_upto(n):
-            if m > n:
-                break
-            divisor, _, times = factor(n, m)
-            if times:
-                yield m, times
-                n = divisor
-                break
+    if n % 2 == 0:
+        yield 2
+        yield from prime_factors(n // 2)
+        return
+
+    for p in range(3, int(sqrt(n)) + 1, 2):
+        quotient, remainder = divmod(n, p)
+        if remainder:
+            continue
         else:
-            yield (n, 1)
+            yield p
+            yield from prime_factors(quotient)
             break
+    else:
+        yield n
+
+
+def factors(n):
+    return (
+        (k, len(list(g)))
+        for k, g in groupby(prime_factors(n))
+    )
 
 
 def first_factor(n):
-    return factors(n).next()[0]
+    return next(factors(n))[0]
 
 
 def is_prime(n):
