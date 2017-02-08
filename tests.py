@@ -40,8 +40,11 @@ def main():
     modules = [p.stem for p in Path().glob('solutions/euler*.py')]
     for name in modules:
         print('%-40s ' % name, end='')
+        sys.stdout.flush()
         try:
-            total_time += timed_test(name)
+            time = timed_test(name)
+            print(round(time, 3))
+            total_time += time
             success_count += 1
         except KeyboardInterrupt:
             break
@@ -55,7 +58,11 @@ def main():
             print(e)
 
     print()
-    print('total time for', success_count, 'problems,', failed, 'failed, is:', total_time)
+    print(
+        'total time for', success_count, 'problems,',
+        failed, 'failed,',
+        'is:', round(total_time, 3)
+    )
 
 
 if __name__ == '__main__':
