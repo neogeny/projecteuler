@@ -27,6 +27,7 @@ def test():
 def run():
     print(largest_prime_factor(TARGET))
 
+
 if __name__ == '__main__':
     test()
     run()
