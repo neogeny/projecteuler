@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-
 """
 Solution to Project Euler Problem
 http://projecteuler.net/
@@ -14,6 +12,7 @@ Prime numbers.
 from math import sqrt
 from bisect import bisect_left as bisect
 from itertools import count
+
 
 __primes = [
     2, 3, 5, 7,
