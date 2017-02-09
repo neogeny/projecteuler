@@ -22,26 +22,25 @@ prime, contains 21 terms, and is equal to 953.
 Which prime, below one-million, can be written as the sum of the most
 consecutive primes?
 """
+from itertools import islice
 from primality import primes_upto
+from primality import is_prime
 
 
-def consecutive_primes_that_sum_prime(upto):
-    prl = list(primes_upto(upto))
-    prs = set(prl)
-    last = prl[:2]
-    for i in range(len(prl)):
-        pos = i + len(last)
-        seq = prl[i:pos]
-        for p in prl[pos:]:
-            seq.append(p)
-            if len(seq) % 2 or len(seq) <= len(last):
-                continue
-            s = sum(seq)
-            if s > prl[-1]:
+def consecutive_primes_that_sum_prime(limit):
+    primes = list(primes_upto(limit))
+    while primes[0] + primes[-1] > limit:
+        del primes[-1]
+
+    for n in range(len(primes), 2, -1):
+        s = sum(primes[:n])
+        for i in range(len(primes) - n):
+            if s > limit:
                 break
-            if s in prs:
-                last = seq[:]
-    return sum(last), len(last)
+            elif is_prime(s):
+                return s, n
+            else:
+                s += primes[i + n] - primes[i]
 
 
 def test():
@@ -49,7 +48,7 @@ def test():
 
 
 def run():
-    assert 958577 == consecutive_primes_that_sum_prime(10 ** 6)[0]
+    assert 997651 == consecutive_primes_that_sum_prime(10 ** 6)[0]
 
 
 if __name__ == '__main__':
