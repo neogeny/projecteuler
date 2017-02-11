@@ -28,7 +28,13 @@ import csv
 
 
 FILENAME = Path(__file__).parent / '../data/matrix.txt'
-MATRIX = [[int(c) for c in line ] for line in csv.reader(open(FILENAME, 'r'))]
+
+
+MATRIX = [
+    [int(c) for c in line]
+    for line in csv.reader(open(FILENAME))
+]
+
 
 TEST_DATA = [
     [131, 673, 234, 103, 18],
