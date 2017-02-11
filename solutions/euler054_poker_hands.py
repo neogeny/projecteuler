@@ -90,6 +90,7 @@ def first(v):
 def second(v):
     return v[1]
 
+
 card_value = first
 card_suit = second
 
