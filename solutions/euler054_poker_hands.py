@@ -9,7 +9,10 @@ by Apalala <apalala@gmail.com>
 (cc) Attribution-ShareAlike
 http://creativecommons.org/licenses/by-sa/3.0/
 
-In the card game poker, a hand consists of five cards and are ranked, from lowest to highest, in the following way:
+Poker hands
+
+In the card game poker, a hand consists of five cards and are ranked,
+ from lowest to highest, in the following way:
 
 High Card: Highest value card.
 One Pair: Two cards of the same value.
@@ -24,7 +27,11 @@ Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
 The cards are valued in the order:
 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace.
 
-If two players have the same ranked hands then the rank made up of the highest value wins; for example, a pair of eights beats a pair of fives (see example 1 below). But if two ranks tie, for example, both players have a pair of queens, then highest cards in each hand are compared (see example 4 below); if the highest cards tie then the next highest cards are compared, and so on.
+If two players have the same ranked hands then the rank made up of the
+highest value wins; for example, a pair of eights beats a pair of fives
+(see example 1 below). But if two ranks tie, for example, both players have
+a pair of queens, then highest cards in each hand are compared (see example
+4 below); if the highest cards tie then the next highest cards are compared, and so on.
 
 Consider the following five hands dealt to two players:
 
@@ -58,16 +65,22 @@ With Three Fours
 Full House
 with Three Threes
      Player 1
-The file, poker.txt, contains one-thousand random hands dealt to two players. Each line of the file contains ten cards (separated by a single space): the first five are Player 1's cards and the last five are Player 2's cards. You can assume that all hands are valid (no invalid characters or repeated cards), each player's hand is in no specific order, and in each hand there is a clear winner.
+The file, poker.txt, contains one-thousand random hands dealt to two
+players. Each line of the file contains ten cards (separated by a single
+space): the first five are Player 1's cards and the last five are Player 2's
+cards. You can assume that all hands are valid (no invalid characters or
+repeated cards), each player's hand is in no specific order, and in each hand
+there is a clear winner.
 
 How many hands does Player 1 win?
 """
+from pathlib import Path
 from itertools import groupby
 
-GAMES_FNAME = 'data/poker.txt'
+GAMES_FNAME = Path(__file__).parent / '../data/poker.txt'
 
-FACE_VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
-VALUES = dict((f, i + 2) for i, f in enumerate(FACE_VALUES))
+FACE_VALUES = list('23456789TJQKA')
+VALUES = {f: i for i, f in enumerate(FACE_VALUES, start=2)}
 
 
 def first(v):
@@ -92,12 +105,14 @@ def parse_hand(cards):
 
 
 def load_games():
-    with open(GAMES_FNAME, 'r') as f:
-        for line in f:
-            cards = parse_hand(line.split())
-            hand_1 = cards[:5]
-            hand_2 = cards[-5:]
-            yield hand_1, hand_2
+    def load():
+        with open(GAMES_FNAME, 'r') as f:
+            for line in f:
+                cards = parse_hand(line.split())
+                hand_1 = cards[:5]
+                hand_2 = cards[-5:]
+                yield hand_1, hand_2
+    return list(load())
 
 
 def rank_hand(hand):
@@ -108,37 +123,33 @@ def rank_hand(hand):
     """
     def groupcounts(it, key=None):
         return [(len(list(g)), k) for k, g in groupby(it, key)]
+
     values = list(reversed(sorted(card_value(c) for c in hand)))
     suits = list(sorted(card_suit(c) for c in hand))
     bycount = list(reversed(sorted(groupcounts(values))))
-    counts = map(first, bycount)
+    counts = list(map(first, bycount))
     poker = [4, 1] == counts
     full = [3, 2] == counts
     different = len(counts) == len(hand)
     flush = 1 == len(set(suits))
     straight = different and values[0] == (values[-1] + len(hand) - 1)
-    return (flush and straight,
-            poker,
-            full,
-            flush,
-            straight,
-            counts,
-            bycount,
-            values,
-            hand)
+
+    return (
+        flush and straight,
+        poker,
+        full,
+        flush,
+        straight,
+        counts,
+        bycount,
+        values,
+        hand
+    )
 
 
 def play_games(games):
-    won_a = 0
-    won_b = 0
-    for a, b in games:
-        ra = rank_hand(a)
-        rb = rank_hand(b)
-        if ra > rb:
-            won_a += 1
-        else:
-            won_b += 1
-    return won_a, won_b
+    won_a = sum(rank_hand(a) >= rank_hand(b) for a, b in games)
+    return won_a, len(games) - won_a
 
 
 def test():
@@ -160,7 +171,7 @@ def test():
 
 
 def run():
-    print play_games(load_games())
+    assert 376 == play_games(load_games())[0]
 
 
 if __name__ == '__main__':
