@@ -22,7 +22,6 @@ prime, contains 21 terms, and is equal to 953.
 Which prime, below one-million, can be written as the sum of the most
 consecutive primes?
 """
-from itertools import islice
 from primality import primes_upto
 from primality import is_prime
 
