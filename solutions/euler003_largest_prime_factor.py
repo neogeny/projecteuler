@@ -17,7 +17,7 @@ TARGET = 600851475143
 
 
 def largest_prime_factor(n):
-    return list(factors(n))[-1][0]
+    return max(factors(n))[0]
 
 
 def test():
