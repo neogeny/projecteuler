@@ -9,9 +9,10 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Factorization.
 """
+import fractions
+import functools
+import itertools
 from math import sqrt
-from itertools import combinations
-from itertools import groupby
 
 
 def factor(n, m):
@@ -49,7 +50,7 @@ def prime_factors(n):
 def factors(n):
     return (
         (k, len(list(g)))
-        for k, g in groupby(prime_factors(n))
+        for k, g in itertools.groupby(prime_factors(n))
     )
 
 
@@ -70,16 +71,15 @@ def factor_count(n, upto=None):
     return s
 
 
-def mcm(numbers):
-    max_factor = {}
-    for i in numbers:
-        for f, k in factors(i):
-            max_factor[f] = max(max_factor.get(f, 0), k)
-    result = 1
-    for f, k in max_factor.items():
-        result *= f ** k
-    return result
+def gcd(*numbers):
+    return functools.reduce(fractions.gcd, numbers)
 
+
+def lcm(*numbers):
+    def _lcm(a, b):
+        return (a * b) // gcd(a, b)
+
+    return functools.reduce(_lcm, numbers, 1)
 
 def multiples(factor_list):
     if not factor_list:
@@ -94,7 +94,7 @@ def multiples(factor_list):
 def divisors(t):
     f = list(factors(t))
     for s in range(len(f) + 1):
-        for c in combinations(f, s):
+        for c in itertools.combinations(f, s):
             for m in multiples(c):
                 yield m
 
