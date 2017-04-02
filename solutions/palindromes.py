@@ -14,4 +14,4 @@ Palindromes.
 
 def is_palindrome(n):
     ns = str(n)
-    return ns == ns[::-1]
+    return all(c == d for c, d in zip(ns, reversed(ns)))

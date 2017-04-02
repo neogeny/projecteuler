@@ -15,13 +15,15 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 from palindromes import is_palindrome
 
 
-def largest_palindromic(digits):
+def largest_palindromic_for_digits(digits, limit=None):
     top = int('9' * digits)
     bot = int('9' * (digits - 1))
     best = 0
     for a in range(top, bot, -1):
         for b in range(top, bot, -1):
             n = a * b
+            if limit and n >= limit:
+                continue
             if n < best:
                 break
             if is_palindrome(n):
@@ -30,11 +32,11 @@ def largest_palindromic(digits):
 
 
 def test():
-    assert 9009 == largest_palindromic(2)
+    assert 9009 == largest_palindromic_for_digits(2)
 
 
 def run():
-    print(largest_palindromic(3))
+    print(largest_palindromic_for_digits(3))
 
 
 if __name__ == '__main__':
