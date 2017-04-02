@@ -21,9 +21,9 @@ def factorial(n):
     return math.factorial(n)
 
 
-def all_fibs():
+def all_fibs(limit=None):
     a = b = 1
-    while True:
+    while limit is None or a < limit:
         yield a
         a, b = b, a + b
 

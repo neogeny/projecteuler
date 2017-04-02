@@ -13,22 +13,16 @@ The sum of the fibonacci numbers less than 4000000
 from series import all_fibs
 
 
-def even_fibs_sum(m):
-    result = 0
-    for i in all_fibs():
-        if i > m:
-            break
-        if not i % 2:
-            result += i
-    return result
+def even_fibs(m):
+    return (f for f in all_fibs(m) if f % 2 == 0)
 
 
 def test():
-    assert 10 == even_fibs_sum(10)
+    assert 10 == sum(even_fibs(10))
 
 
 def run():
-    print(even_fibs_sum(4 * 10 ** 6))
+    print(sum(even_fibs(4 * 10 ** 6)))
 
 
 if __name__ == '__main__':
