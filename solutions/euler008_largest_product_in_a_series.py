@@ -9,11 +9,12 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Find the greatest product of five consecutive digits in the 1000-digit number.
 """
-from functools import reduce
-from operator import __mul__
+import functools
+import itertools
+import operator
 
 
-STARGET = """
+TARGET = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
@@ -36,26 +37,25 @@ STARGET = """
 71636269561882670428252483600823257530420752963450
 """
 
-STARGET = ''.join(STARGET.strip().split())
-
-TARGET = [int(c) for c in STARGET]
+TARGET = ''.join(TARGET.strip().split())
 
 
-def largest_product_of(n, m):
+def largest_product_of(n, k):
+    n = [int(c) for c in str(n)]
     return max(
-        reduce(__mul__, m[i:i + n], 1)
-        for i in range(len(m) - n)
+        functools.reduce(operator.mul, itertools.islice(n, i, i + k), 1)
+        for i in range(len(n) - k)
     )
 
 
 def test():
-    assert 9 == largest_product_of(1, TARGET)
-    assert 81 == largest_product_of(2, TARGET)
-    assert 5832 == largest_product_of(4, TARGET)
+    assert 9 == largest_product_of(TARGET, 1)
+    assert 81 == largest_product_of(TARGET, 2)
+    assert 5832 == largest_product_of(TARGET, 4)
 
 
 def run():
-    print(largest_product_of(13, TARGET))
+    print(largest_product_of(TARGET, 13))
 
 
 if __name__ == '__main__':
