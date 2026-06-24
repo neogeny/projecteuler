@@ -1,6 +1,8 @@
 # Changelog
 
-## [1.0.0] - 2026-06-24
+## [v0.3.12] - 2026-06-24
+
+[v0.3.12]: https://github.com/neogeny/ogopego/compare/0938d15...v0.3.12
 
 ### Changed
 
