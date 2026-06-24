@@ -1,9 +1,10 @@
+.idea
+.swp
+.ropeproject
+uv.lock
+src/build
+a.out
+*.orig
 *.py[co]
 *.so
 *.old
-src/build
-a.out
-.swp
-.ropeproject
-*.orig
-.idea

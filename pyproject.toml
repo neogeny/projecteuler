@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "projecteuler"
+version = "1.0.0"
+description = "Solutions to Project Euler problems"
+readme = "README.md"
+license = {text = "CC BY-SA 3.0"}
+authors = [
+    {name = "Juancarlo Añez", email = "apalala@gmail.com"},
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["solutions*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+solutions = ["*.txt", "*.csv"]
+
+[dependency-groups]
+dev = [
+    "pytest-xdist[psutil]>=3.8.0",
+]
+test = [
+    "pytest>=9.1.1",
+    "pytest-xdist[psutil]>=3.8.0",
+]
+
+[tool.pytest]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+minversion = "9.0"
+addopts = ["-n", "auto", "--durations=10", "--no-header"]
+

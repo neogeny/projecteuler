@@ -7,6 +7,7 @@
 ### Changed
 
 - Migrated from Python 2.7 to Python 3.12
+- The solutions can now be run as `pytest` tests
 - Replaced all `print` statements with `print()` function calls
 - Replaced `xrange()` with `range()`
 - Replaced `itertools.izip()` with built-in `zip()`
