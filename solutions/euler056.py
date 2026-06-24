@@ -23,8 +23,8 @@ def max_digit_sum(alimit, blimit):
     result = 0
     amax = 0
     bmax = 0
-    for a in xrange(2,alimit):
-        for b in xrange(2,blimit):
+    for a in range(2, alimit):
+        for b in range(2, blimit):
             s = sumdigits(a**b)
             if s > result:
                 result = s
@@ -37,7 +37,7 @@ def test():
     assert (45, 9, 7)  == max_digit_sum(10,10)
 
 def run():
-    print max_digit_sum(100,100)
+    print(max_digit_sum(100, 100))
 
 if __name__ == '__main__':
     test()

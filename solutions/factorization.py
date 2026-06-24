@@ -9,10 +9,9 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 Factorization.
 """
-import fractions
 import functools
 import itertools
-from math import sqrt
+from math import gcd as math_gcd, sqrt
 
 
 def factor(n, m):
@@ -72,7 +71,7 @@ def factor_count(n, upto=None):
 
 
 def gcd(*numbers):
-    return functools.reduce(fractions.gcd, numbers)
+    return functools.reduce(math_gcd, numbers)
 
 
 def lcm(*numbers):

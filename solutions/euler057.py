@@ -28,7 +28,7 @@ from fractions import Fraction as frac
 
 def root2_continued_fraction(iters):
     a = 1
-    for _ in xrange(iters):
+    for _ in range(iters):
         a = 1 + frac(1, 1+a)
         yield a
 
@@ -41,7 +41,7 @@ def test():
 
 def run():
     expansion = root2_continued_fraction(1000)
-    print sum(dlen(f.numerator) > dlen(f.denominator) for f in expansion)
+    print(sum(dlen(f.numerator) > dlen(f.denominator) for f in expansion))
 
 if __name__ == '__main__':
     test()

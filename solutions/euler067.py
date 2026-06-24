@@ -40,6 +40,11 @@ TRIANGLE = [[int(s) for s in line] for line in LINES]
 def test():
     euler018.test()
 
+
+def run():
+    print(euler018.max_path_value_sweep(TRIANGLE))
+
+
 if __name__ == '__main__':
     test()
-    print euler018.max_path_value_sweep(TRIANGLE)
+    run()

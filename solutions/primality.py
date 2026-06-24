@@ -29,7 +29,7 @@ __primes = [
 
 
 def nth_prime(n):
-    global __primes
+    global __primes  # noqa: PLW0603
     if not __primes:
         __primes = [2]
 
@@ -61,7 +61,7 @@ def is_prime(n):
     elif known_prime(n):
         return True
     else:
-        return all(n % p for p in primes_upto(n))
+        return all(n % p for p in primes_upto(int(sqrt(n)) + 1))
 
 
 def all_primes():

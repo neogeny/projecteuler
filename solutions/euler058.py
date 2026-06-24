@@ -28,13 +28,13 @@ from primality import is_prime
 
 def find_sides_for_prime_ratio(target_ratio, min_side_len=0):
     numbers = spiral_diagonal_numbers()
-    numbers.next()
+    next(numbers)
     count = 1
     primes = 0
     ratio = 0.0
     while True:
-        for _ in xrange(4):
-            n, side_len, _ = numbers.next()
+        for _ in range(4):
+            n, side_len, _ = next(numbers)
             count += 1
             if is_prime(n):
                 primes += 1
@@ -46,7 +46,7 @@ def test():
     assert 0.62 == round(find_sides_for_prime_ratio(0.62, 7)[1], 2)
 
 def run():
-    print find_sides_for_prime_ratio(0.10)
+    print(find_sides_for_prime_ratio(0.10))
 
 if __name__ == '__main__':
     test()

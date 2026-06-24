@@ -20,11 +20,11 @@ Unfortunately, this method is impractical for most users, so the modified method
 Your task has been made easy, as the encryption key consists of three lower case characters. Using cipher1.txt (right click and 'Save Link/Target As...'), a file containing the encrypted ASCII codes, and the knowledge that the plain text must contain common English words, decrypt the message and find the sum of the ASCII values in the original text.
 """
 import csv
-from itertools import izip, cycle, product
+from itertools import cycle, product
 from string import ascii_lowercase, ascii_uppercase
 
 FILENAME ='data/cipher1.txt'
-CIPHER = [int(c) for c in csv.reader(open(FILENAME, 'r')).next()]
+CIPHER = [int(c) for c in next(csv.reader(open(FILENAME, 'r')))]
 
 ALOWER = set(ascii_lowercase)
 AUPPER = set(ascii_uppercase)
@@ -45,7 +45,7 @@ def rate_for_english(text):
     return rate
 
 def encode(text, key):
-    for t, c in izip(text, cycle(key)):
+    for t, c in zip(text, cycle(key)):
         yield t ^ c
 
 def code2ascii(text):
@@ -68,9 +68,9 @@ def test():
 
 def run():
     rate, key = find_best_rated_key(CIPHER)
-    print rate, key
-    print sum(encode(CIPHER, key))
-    print ''.join(code2ascii(encode(CIPHER, key)))
+    print(rate, key)
+    print(sum(encode(CIPHER, key)))
+    print(''.join(code2ascii(encode(CIPHER, key))))
 
 if __name__ == '__main__':
     test()
