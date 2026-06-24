@@ -3,8 +3,8 @@ to augment my knowledge about algorithms and math, and to gain practice
 with specific programming languages, their standard libraries, and the
 many specialised libraries available out there.
 
-Most of the problems so far have been solved using [Python] and [Cython]
-even if there are analytical (paper and pencil) solutions to them.
+Most of the problems so far have been solved using [Python] even if
+there are analytical (paper and pencil) solutions to them.
 
 Unlike many of the programs found on the posts readable after you
 provide the solution on the [project][Project Euler]'s web site, mine
@@ -30,7 +30,7 @@ So far I've approached the problems this way:
     later if it seems too hard. The reason for this is provided in the
     hints at [Project Euler]: new problems tend to build upon knowledge
     gained with previous problems (and, in my case, previous code).
-3.  If I get bored, I browse for a problem I that I want to solve or
+3.  If I get bored, I browse for a problem that I want to solve or
     that I find easy to solve and have a take at it.
 4.  I always devise a strategy in my head before coming back to the
     computer. When I sit at the keyboard, I already know what I'm going
@@ -48,13 +48,16 @@ you want to review what I have written for other reasons.
 
 To run the tests just issue:
 
-    python tests.py
+    python3 tests.py
 
 at the commandline. The tests won't work with optimizations (`-O`)
 enabled because of the reliance on [Python] assertions.
 
-To solve the problems, run each `src/eulerXXX.py` program individually.
+To solve the problems, run each `solutions/eulerXXX.py` program individually.
+
+## Requirements
+
+- [Python] 3.12+
 
   [Project Euler]: http://projecteuler.net/
   [Python]: http://www.python.org/
-  [Cython]: http://cython.org/

@@ -31,7 +31,7 @@ billion years to check them all. There is an efficient algorithm to solve it.
 ;o)
 """
 
-import euler018
+import euler018_maximum_path_sum_I as euler018
 
 STRIANGLE = open('data/triangle.txt', 'r').read()
 LINES = [s.split() for s in STRIANGLE.strip().split('\n')]
