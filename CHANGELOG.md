@@ -2,7 +2,7 @@
 
 ## [v0.3.12] - 2026-06-24
 
-[v0.3.12]: https://github.com/neogeny/ogopego/compare/v0.1.0...v0.3.12
+[v0.3.12]: https://github.com/neogeny/projecteuler/compare/v0.1.0...v0.3.12
 
 ### Changed
 
